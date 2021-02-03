@@ -132,12 +132,17 @@
                                                                             <h4>@if($task->status>0) <i class="fa fa-check"></i> 
 
                                                                                 @else <i class="fa fa-info-circle"></i> @endif {{$task->title}} 
-                                                                                @if($task->status == 0)   Due Date (to be completed on): {{ date("M d, Y",strtotime($task->deadline)) }}   
+                                                                                @if($task->status == 0)   Due Date  {{ date("M d, Y",strtotime($task->deadline)) }}   
                                                                                
                                                                                @else
                                                                               <span style="color: red;"> 
-                                                                              Due Date (completed on):
+                                                                              Due Date:
                                                                                {{ date("M d, Y",strtotime($task->updated_at)) }} ({{$task->updated_at->diffForHumans()}})
+                                                                                </span> <br>
+                                        
+                                                                            <span style="color: red;"> 
+                                                                              Completion Date:
+                                                                               {{ date("M d, Y",strtotime($task->updated_at)) }}  
                                                                                 </span>
                                                                               @endif
                                                                             </h4>  
@@ -189,6 +194,8 @@
 
                                     <form action="{{route('user.AddTask', $user->id)}}" method="post">
                                         @csrf
+
+                                        <input type="text" value="{{$user->id}}" name="user_id" hidden="true">
                                         <label>Titel:<span style="color: red;">*</span></label>
                                                      <input type="text" name="title" class="form-control" placeholder="Tile" required="true">
 

@@ -23,44 +23,11 @@ class UserController extends Controller
   }
 
 
- public function MarkCompleted($id)
- {
-  $task = Task::where('id', $id)->first();
-  $task->status = 1;
-  $task->save();
 
-  Session::flash('success', $task->title.' '. 'marked as completed in the system');
-
-  return redirect()->back();
- }
 
   
 
-   public function AddTask(request $request, $id)
-   {
-    $user_id = 0;
-    $created_by = 0;
 
-      if ($id == Auth::user()->id) {
-         $user_id = Auth::user()->id;
-         $created_by = Auth::user()->id;
-      } else{
-         $user_id = $id;
-         $created_by=  Auth::user()->id;
-      }
-
-     $task = new Task;
-     $task->user_id = $user_id;
-     $task->created_by = $created_by;
-     $task->title = $request->title;
-     $task->body = $request->body;
-     $task->deadline = $request->deadline;
-     $task->save();
-
-     Session::flash('success', 'Task Created Successfully');
-     return redirect()->back();
-
-   }
 
   public function update(request $request, $id)
   {

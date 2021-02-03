@@ -130,12 +130,14 @@
                                            <li>
                                                <a href="{{route('hr.dashboard')}}">Dashboard</a>
                                            </li>
+
                                            <li>
                                                <a href="#">Employees</a>
                                            </li>
                                            <li>
                                                <a href="#">Payrols</a>
                                            </li>
+                                           
                                            <li>
                                                <a href="#">Timesheets</a>
                                            </li>
@@ -144,12 +146,18 @@
                                            </li>
                                            <li>
                                                <a href="#">HR Reports</a>
-                                           </li>
+                                           </li> 
+
+                                           <li>
+                                               <a href="#">Bank Accounts</a>
+                                           </li> 
+
+                                           
                                        </ul>
                                     </li>
 
-                  <li>
-                              <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="fa fa-th-large sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Departments</span></a>
+                  <li> 
+                    <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="fa fa-th-large sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Departments</span></a>
                               <ul style="display: none;">
                                   <li>
                                       <a href="#">List & controls</a>
@@ -182,10 +190,10 @@
                               <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="fa fa-th-large sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Category</span></a>
                               <ul style="display: none;">
                                   <li>
-                                      <a href="#">List & controls</a>
+                                      <a href="{{route('category.index')}}">List & controls</a>
                                   </li>
                                   <li>
-                                      <a href="#">Add new Position</a>
+                                      <a href="{{route('category.create')}}">Add new Category</a>
                                   </li>
                                 
                                   
@@ -247,6 +255,20 @@
                                   </li>
                                   <li>
                                       <a href="#">Add new Position</a>
+                                  </li>
+                                
+                                  
+                              </ul>
+                           </li>
+
+                           <li>
+                              <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="fa fa-th-large sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Tasks</span></a>
+                              <ul style="display: none;">
+                                  <li>
+                                      <a href="#">List & controls</a>
+                                  </li>
+                                  <li>
+                                      <a href="{{route('newtask.create')}}">Add new Task</a>
                                   </li>
                                 
                                   

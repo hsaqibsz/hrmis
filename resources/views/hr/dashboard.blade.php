@@ -101,44 +101,43 @@
             </div>
             
                                           @foreach($users as $user)
-
-
+                                          
                                           <div class="col-sm-6 col-md-4">
                                                                           <!-- Advanced Active Theme Color Widget -->
-                                                                          <div class="widget">
-                                                                              <div class="widget-advanced">
-                                                                                  <!-- Widget Header -->
-                                                                                  <div class="widget-header text-center themed-background-dark">
-                                                                                      <h3 class="widget-content-light">
-                                                                                          <a href="{{route('user.profile', $user->id)}}" class="themed-color"><span style="transition: capitalized;">{{$user->name}}</span> <span style="text-transform: uppercase;">{{$user->lastname}}</span></a><br>
-                                                                                          <small>{{$user->profile->province}}</small>
-                                                                                          <small>{{$user->profile->postion}}</small>
-                                                                                      </h3>
-                                                                                  </div>
-                                                                                  <!-- END Widget Header -->
+                                                        <div class="widget">
+                                                            <div class="widget-advanced">
+                                                                <!-- Widget Header -->
+                                                                <div class="widget-header text-center themed-background-dark">
+                                                                    <h3 class="widget-content-light">
+                                                                        <a href="{{route('user.profile', $user->id)}}" class="themed-color"><span style="transition: capitalized;">{{$user->name}}</span> <span style="text-transform: uppercase;">{{$user->lastname}}</span></a><br>
+                                                                        <small>{{$user->profile->province}}</small>
+                                                                        <small>{{$user->profile->postion}}</small>
+                                                                    </h3>
+                                                                </div>
+                                                                <!-- END Widget Header -->
 
-                                                                                  <!-- Widget Main -->
-                                                                                  <div class="widget-main">
-                                                                                      <a href="{{route('user.profile', $user->id)}}" class="widget-image-container animation-hatch">
-                                                                                          <img src="{{$user->profile->avatar}}" alt="avatar" class="widget-image img-circle" >
-                                                                                      </a>
-                                                                                      <div class="row text-center animation-fadeIn">
-                                                                                          <div class="col-xs-4">
-                                                                                              <h3><small>Based in</small><br><strong>{{$user->profile->zone}}</strong> <br> <small>Region</small></h3>
-                                                                                          </div>
-                                                                                          <div class="col-xs-4">
-                                                                                              <h3><small>Charged in</small> <br><strong>3</strong><br><small>Projects</small></h3>
-                                                                                          </div>
-                                                                                          <div class="col-xs-4">
-                                                                                              <h3><strong>4</strong><br><small>Educational Documents</small></h3>
-                                                                                          </div>
-                                                                                      </div>
-                                                                                  </div>
-                                                                                  <!-- END Widget Main -->
-                                                                              </div>
-                                                                          </div>
-                                                                          <!-- END Advanced Active Theme Color Widget -->
-                                                                      </div>
+                                                                <!-- Widget Main -->
+                                                                <div class="widget-main">
+                                                                    <a href="{{route('user.profile', $user->id)}}" class="widget-image-container animation-hatch">
+                                                                        <img src="{{$user->profile->avatar}}" alt="avatar" class="widget-image img-circle" >
+                                                                    </a>
+                                                                    <div class="row text-center animation-fadeIn">
+                                                                        <div class="col-xs-4">
+                                                                            <h3><small>Based in</small><br><strong>{{$user->profile->zone}}</strong> <br> <small>Region</small></h3>
+                                                                        </div>
+                                                                        <div class="col-xs-4">
+                                                                            <h3><small>Charged in</small> <br><strong>3</strong><br><small>Projects</small></h3>
+                                                                        </div>
+                                                                        <div class="col-xs-4">
+                                                                            <h3><strong>4</strong><br><small>Educational Documents</small></h3>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- END Widget Main -->
+                                                            </div>
+                                                        </div>
+                                                        <!-- END Advanced Active Theme Color Widget -->
+                                                    </div>
                                         @endforeach
                                          
 

@@ -23,8 +23,11 @@ Route::get('/home', 'HomeController@index');
 
 
  
-route::get('/mark/completed/task/{id}', 'UserController@MarkCompleted')->name('task.mrkCompleted');
-route::post('/add/new/task/{id}', 'UserController@AddTask')->name('user.AddTask');
+route::get('/mark/completed/task/{id}', 'TasksController@MarkCompleted')->name('task.mrkCompleted');
+route::post('/add/new/task', 'TasksController@AddTask')->name('user.AddTask');
+route::get('/add/new/task', 'TasksController@create')->name('newtask.create');
+
+
 route::get('/register/new', 'UserController@new')->name('user.register.new');
 route::post('/register', 'UserController@register')->name('user.register');
 route::get('/user/profile/edit/{id}', 'UserController@edit')->name('user.edit.profile');
@@ -45,3 +48,4 @@ route::get('/hr/user/profile/{id}', 'UserController@profile')->name('user.profil
 route::get('/hr/user/sort/{a}', 'UserController@sort')->name('user.sort');
 
  
+ Route::resource('/category', 'CategoryController');
