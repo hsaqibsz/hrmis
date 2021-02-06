@@ -10,7 +10,7 @@
                  <!-- END Basic Wizard Title -->
 
                      <!-- Second Step -->
-                         <form id="basic-wizard" action="{{route('user.complete_profile7', $profile->user_id)}}" method="post" class="form-horizontal form-bordered ui-formwizard" enctype="multipart/form-data">
+                         <form id="basic-wizard" action="{{route('user.complete_profile4', $profile->user_id)}}" method="post" class="form-horizontal form-bordered ui-formwizard" enctype="multipart/form-data">
                   @csrf
                   
                      <div id="second" class="step ui-formwizard-content"   style="display:  block;">
@@ -28,17 +28,8 @@
                                     <span><i class="fa fa-check"></i></span>             
                                 </div>
 
-                             <div class="col-xs-2 done">
-                                <span><i class="fa fa-check"></i></span>  
-                             </div>
-
-                              <div class="col-xs-2 done">
-                                  <span><i class="fa fa-check"></i></span>  
-                             </div>
-
-                              <div class="col-xs-2 done">
-                                 <span>5. Education</span>
-                             </div>
+                    
+                            
 
                              <div class="col-xs-2 active">
                                  <span>6. Experience </span>
@@ -148,9 +139,10 @@
                                                  <div class="col-md-8 col-md-offset-4">
                                                      <button onclick="" class="btn btn-sm btn-warning ui-wizard-content ui-formwizard-button">Back</button>
 
-                                                     <input type="submit" class="btn btn-sm btn-primary ui-wizard-content ui-formwizard-button" id="next" value="Next">
+                                                     <input type="submit" class="btn btn-sm btn-primary ui-wizard-content ui-formwizard-button" id="next" value="Save and new record">
+                                                     <a href="#" class="btn btn-sm btn-primary ui-wizard-content ui-formwizard-button">Go to documents upload</a>
                                               @if($profile->user->experience->count()>1)
-                                                     <a href="{{route('user.profile', $profile->user_id)}}" class="btn btn-sm btn-primary ui-wizard-content ui-formwizard-button"> Open Profile</a>
+                                                     <a href="{{route('user.profile', $profile->user_id)}}" class="btn btn-sm btn-primary ui-wizard-content ui-formwizard-button"> Go to Profile</a>
                                                 @endif
                                                  </div>
                                              </div>
@@ -194,7 +186,12 @@
                                       <td> {{$experience->organization}}</td>
                                       <td> {{$experience->salary}}/{{$experience->unit}}</td>
                                       <td> {{$experience->from}}</td>
+                                      @if($experience->to !== null)
                                       <td> {{$experience->to}}</td>
+                                      
+                                      @else
+                                      <td> Still working here</td>
+                                      @endif
                                        
                                   </tr>
                                   @endforeach

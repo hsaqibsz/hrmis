@@ -29,11 +29,8 @@ class CreateProfilesTable extends Migration
 
              //documents to be uploaded
              $table->string('avatar')->nullable();
-             $table->string('resume')->nullable();
              $table->string('NIC_No')->nullable();
              $table->string('passport_No')->nullable();
-             $table->string('NIC')->nullable();
-             $table->string('passport')->nullable();
 
 
 
@@ -61,19 +58,14 @@ class CreateProfilesTable extends Migration
              /*social media addresses*/
             
             //HR information
-            $table->string('department')->nullable();
+            $table->string('department_id')->nullable();
             $table->string('country')->default('Afghanistan');
-            $table->string('zone')->nullable();
-            $table->string('province')->nullable();
-            $table->string('position')->nullable();
+            $table->string('region_id')->nullable();
+            $table->string('province_id')->nullable();
+            $table->string('position_id')->nullable();
             $table->string('join_date')->nullable();
             $table->string('expiry_date')->nullable();
-
-            //Financial Information
-            $table->string('bank_account_number')->nullable();
-            $table->string('scan_bank_account_card')->nullable();
-            $table->integer('salary')->nullable();
-            $table->string('currency')->nullable();
+          
             $table->integer('role')->default(0);
             $table->timestamps();
 

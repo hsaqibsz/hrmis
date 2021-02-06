@@ -19,7 +19,7 @@ class CreateExperiencesTable extends Migration
             $table->datetime('from');
             $table->datetime('to')->nullable();
             $table->integer('not_finished')->default(0);
-             $table->string('location')->nullable();
+            $table->string('location')->nullable();
             $table->string('title');
             $table->string('organization');
             $table->integer('salary');

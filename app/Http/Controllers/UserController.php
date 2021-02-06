@@ -69,84 +69,7 @@ class UserController extends Controller
            
               } 
        
-      /*  resume*/
-              $file_resume_name = null;
-              $resume_path = null;
-              if ($request->resume!== null) {
-                  $file_resume = $request->file('resume');
-                  $file_resume_name = uniqid().$file_resume->getClientOriginalName();
-                  $path = base_path("uploads/hr/resume/".date('Y')."/".date('M'));
-                  $file_resume->move($path, $file_resume_name);
-              
-              }
-
-         /*NIC*/
-              $file_NIC_name = null;
-              $NIC_path = null;
-              if ($request->NIC!== null) {
-                  $file_NIC = $request->file('NIC');
-                  $file_NIC_name = uniqid().$file_NIC->getClientOriginalName();
-                  $path = base_path("uploads/hr/NIC/".date('Y')."/".date('M'));
-                  $file_NIC->move($path, $file_NIC_name);
-              
-              }
-
-              /*passport*/
-                   $file_passport_name = null;
-                   $passport_path = null;
-                   if ($request->passport!== null) {
-                       $file_passport = $request->file('passport');
-                       $file_passport_name = uniqid().$file_passport->getClientOriginalName();
-                       $path = base_path("uploads/hr/passport/".date('Y')."/".date('M'));
-                       $file_passport->move($path, $file_passport_name);
-                   
-                   }
-
-              /*scan bank account card*/
-                   $file_bank_account_card = null;
-                   $card_path = null;
-                   if ($request->scan_bank_account_card!== null) {
-                       $file_bank_account_card = $request->file('scan_bank_account_card');
-                       $file_scan_bank_account_card_name = uniqid().$file_bank_account_card->getClientOriginalName();
-                       $path = base_path("uploads/hr/bankcard/".date('Y')."/".date('M'));
-                       $file_bank_account_card->move($path, $file_bank_account_card);
-                   
-                   }
-
-
-
-     
-
-         if($request->avatar !== null){
-                  $profile->avatar =  "/uploads/hr/avatar/".date('Y')."/".date('M')."/".$file_avatar_name;
-                    
-                    }    
-
-
-          if($request->resume !== null){
-                   $profile->resume =  "/uploads/hr/resume/".date('Y')."/".date('M')."/".$file_resume_name;
-                     
-                     }
-
-          if($request->NIC !== null){
-                   $profile->NIC =  "/uploads/hr/NIC/".date('Y')."/".date('M')."/".$file_NIC_name;
-                     
-                     }
-
-
-          if($request->passport !== null){
-                   $profile->passport =  "/uploads/hr/passport/".date('Y')."/".date('M')."/".$file_passport_name;
-                     
-
-                     }
-
-
-          if($request->scan_bank_account_card !== null){
-                   $profile->scan_bank_account_card =  "/uploads/hr/bankcard/".date('Y')."/".date('M')."/".$file_scan_bank_account_card_name;
-                     
-
-                     }
-
+       
               $profile->NIC_number = $request->NIC_number;
               $profile->passport_number = $request->passport_number;
 
@@ -165,32 +88,23 @@ class UserController extends Controller
             $profile->facebook = $request->facebook;
             $profile->twitter = $request->twitter;
             $profile->linked = $request->linked;
-          
-          
-          if($request->bank_account_number !== null){
-              $profile->bank_account_number = $request->bank_account_number;
-              $profile->salary = $request->salary;
-              $profile->currency = $request->currency;
+ 
+    
 
-              $profile->department = $request->department;
+              $profile->department_id = $request->department_id;
               $profile->country = $request->country;
-              $profile->zone = $request->zone;
-              $profile->province = $request->province;
-              $profile->position = $request->position;
+              $profile->region_id = $request->region_id;
+              $profile->province_id = $request->province_id;
+              $profile->position_id = $request->position_id;
               $profile->join_date = $request->join_date;
               $profile->expiry_date = $request->expiry_date;
-          }
+          
 
 
 
-          if($request->role !== null){
+          if($request->role !== null) {
               $profile->role = $request->role;
           }
-   
-   
-
-
-
 
             $profile->save();
 
@@ -266,7 +180,11 @@ if (!Auth::check()) {
    $profile->user_id = $user->id;
    $profile->save();
 
+   if (Auth::user()->profile->role>1) {
+   
+     return view('hr.users.edit', compact('profile'));
 
+   }else
 
    return redirect(route('user.complete_profile1', $user->id));
 
@@ -287,6 +205,18 @@ if (!Auth::check()) {
  public function completeProfile2(request $request, $id)
     {
 
+
+       $file_avatar_name = null;
+        $avatar_path = null;
+        if ($request->avatar !== null) {
+            $file_avatar = $request->file('avatar');
+            $file_avatar_name = uniqid().$file_avatar->getClientOriginalName();
+            $path = base_path("public/uploads/hr/avatar/".date('Y')."/".date('M'));
+            $file_avatar->move($path, $file_avatar_name);
+     
+        }
+
+
       $validatedData = $request->validate([
               'father_name' => 'required',
               'marital_status' => 'required',
@@ -296,6 +226,11 @@ if (!Auth::check()) {
           ]);
         
         $profile = Profile::where('user_id', $id)->first();
+        
+        if($request->avatar !== null){
+        $profile->avatar =  "/uploads/hr/avatar/".date('Y')."/".date('M')."/".$file_avatar_name;
+          
+          } 
         $profile->father_name = $request->father_name;
         $profile->marital_status = $request->marital_status;
         $profile->dob = $request->dob;
@@ -304,6 +239,23 @@ if (!Auth::check()) {
         $profile->gender = $request->gender;
         $profile->contact_person_name = $request->contact_person_name;
         $profile->contact_person_phone = $request->contact_person_phone;
+
+
+        
+      $profile->permanent_village = $request->permanent_village;
+      $profile->permanent_district = $request->permanent_district;
+      $profile->permanent_province = $request->permanent_province;
+      $profile->current_province = $request->current_province;
+      $profile->current_district = $request->current_district;
+      $profile->current_village = $request->current_village;
+
+          $profile->habit_interests = $request->habit_interests;
+      $profile->it_skills = $request->it_skills;
+      $profile->facebook = $request->facebook;
+      $profile->twitter = $request->twitter;
+      $profile->linked = $request->linked;
+
+
         $profile->save();
 
         Session::flash('success', 'The Personal Information has been updated successfully, please duly complete the remaining parts');
@@ -313,137 +265,7 @@ if (!Auth::check()) {
     }
 
 
-    public function completeProfile3(Request $request, $id)
-    {
- 
-
-   /*avatar*/
-        $file_avatar_name = null;
-        $avatar_path = null;
-        if ($request->avatar !== null) {
-            $file_avatar = $request->file('avatar');
-            $file_avatar_name = uniqid().$file_avatar->getClientOriginalName();
-            $path = base_path("public/uploads/hr/avatar/".date('Y')."/".date('M'));
-            $file_avatar->move($path, $file_avatar_name);
-     
-        } 
- 
-/*  resume*/
-        $file_resume_name = null;
-        $resume_path = null;
-        if ($request->resume!== null) {
-            $file_resume = $request->file('resume');
-            $file_resume_name = uniqid().$file_resume->getClientOriginalName();
-            $path = base_path("public/uploads/hr/resume/".date('Y')."/".date('M'));
-            $file_resume->move($path, $file_resume_name);
-        
-        }
-
-   /*NIC*/
-        $file_NIC_name = null;
-        $NIC_path = null;
-        if ($request->NIC!== null) {
-            $file_NIC = $request->file('NIC');
-            $file_NIC_name = uniqid().$file_NIC->getClientOriginalName();
-            $path = base_path("public/uploads/hr/NIC/".date('Y')."/".date('M'));
-            $file_NIC->move($path, $file_NIC_name);
-        
-        }
-
-        /*passport*/
-             $file_passport_name = null;
-             $passport_path = null;
-             if ($request->passport!== null) {
-                 $file_passport = $request->file('passport');
-                 $file_passport_name = uniqid().$file_passport->getClientOriginalName();
-                 $path = base_path("public/uploads/hr/passport/".date('Y')."/".date('M'));
-                 $file_passport->move($path, $file_passport_name);
-             
-             }
-
-
-
-       $profile = Profile::where('user_id', $id)->first();
-
-   if($request->avatar !== null){
-            $profile->avatar =  "/uploads/hr/avatar/".date('Y')."/".date('M')."/".$file_avatar_name;
-              
-              }    
-
-
-    if($request->resume !== null){
-             $profile->resume =  "/uploads/hr/resume/".date('Y')."/".date('M')."/".$file_resume_name;
-               
-               }
-
-    if($request->NIC !== null){
-             $profile->NIC =  "/uploads/hr/NIC/".date('Y')."/".date('M')."/".$file_NIC_name;
-               
-               }
-
-
-    if($request->passport !== null){
-             $profile->passport =  "/uploads/hr/passport/".date('Y')."/".date('M')."/".$file_passport_name;
-               
-
-               }
-
-    $profile->save();
-
-    Session::flash('success', 'Step2 Files Uploaded successfully!');
-
-  return view('hr.users.complete_profile_st3', compact('profile'));
-
-
-
-    }
-
-
-
-public function completeProfile4(request $request, $id)
-  {
-
-  
-    
-      $profile = Profile::where('user_id', $id)->first();
-
- 
-      $profile->permanent_village = $request->permanent_village;
-      $profile->permanent_district = $request->permanent_district;
-      $profile->permanent_province = $request->permanent_province;
-      $profile->current_province = $request->current_province;
-      $profile->current_district = $request->current_district;
-      $profile->current_village = $request->current_village;
-
-      $profile->save();
-
-      Session::flash('success', 'Step3 Address Information has been saved successfully!');
-
-      return view('hr.users.complete_profile_st4', compact('profile'));
-
-  }
-
-  public function completeProfile5 (request $request, $id)
-  {
- 
-    $profile = Profile::where('user_id', $id)->first();
-
-    $profile->habit_interests = $request->habit_interests;
-    $profile->it_skills = $request->it_skills;
-    $profile->facebook = $request->facebook;
-    $profile->twitter = $request->twitter;
-    $profile->linked = $request->linked;
-    $profile->save();
-
-Session::flash('success', 'Step4 Extra Information has been saved successfully!');
-
-
-return view('hr.users.complete_profile_st5', compact('profile'));
-  }  
-
-
-
-public function completeProfile6 (request $request, $id)
+public function completeProfile3 (request $request, $id)
   {
 
  
@@ -471,27 +293,15 @@ public function completeProfile6 (request $request, $id)
 
   Session::flash('success','Added Successfully, please add new record');
 
-return view('hr.users.complete_profile_st5', compact('edu', 'profile'));
+//return view('hr.users.complete_profile_st2', compact('edu', 'profile'));
+return redirect()->back()->with(['edu' => $edu, 'profile', $profile]);
   }
 
 
-
-public function OpenExperience($id)
-{
-
- 
-  $profile = Profile::where('user_id', $id)->first();
-  return view('hr.users.complete_profile_st6', compact('profile'));
-
-}
-
-public function completeProfile7 (request $request, $id)
+public function completeProfile4 (request $request, $id)
   {
 
-
      $profile = Profile::where('user_id', $id)->first();
-
- 
 
  $exp = New Experience;
  $exp->user_id = $id;
@@ -514,10 +324,20 @@ public function completeProfile7 (request $request, $id)
 
   Session::flash('success','Added Successfully, please add new record');
 
-return view('hr.users.complete_profile_st6', compact('exp','profile'));
+//return view('hr.users.complete_profile_st6', compact('exp','profile'));
+ 
+return redirect()->back()->with(['exp' => $exp, 'profile', $profile]);
+
   }
 
 
+public function OpenExperience($id)
+{
+
+  $profile = Profile::where('user_id', $id)->first();
+  return view('hr.users.complete_profile_st6', compact('profile'));
+
+}
 
   public function completeProfile8 ($id)
   {
@@ -527,8 +347,5 @@ return view('hr.users.complete_profile_st6', compact('exp','profile'));
     return view('hr.users.complete_profile_st7', compact('profile'));
 
   }
-
-
-
 
 }

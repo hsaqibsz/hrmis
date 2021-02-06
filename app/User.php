@@ -65,15 +65,23 @@ class User extends Authenticatable
         return $this->hasMany('App\Project');
     }
 
-        public function files()
-    {
-        return $this->hasMany('App\File');
-    }
-
-
+    
+    
     public function position()
     {
         return $this->hasOne('App\Position');
+    }
+   
+   
+   
+    public function documents()
+{
+    return $this->hasMany('App\Document');
+}
+   
+    public function contract()
+    {
+        return $this->hasMany('App\Contract');
     }
     
 }
