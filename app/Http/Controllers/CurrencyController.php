@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Position;
+use App\Currency;
 use Auth;
 use Session;
 use Illuminate\Http\Request;
 
-class PositionController extends Controller
+class currencyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,9 @@ class PositionController extends Controller
      */
     public function index()
     {
-        $position = Position::all();
+        $currency = Currency::all();
 
-        return view('position.index', compact('position'));
+        return view('currency.index', compact('currency'));
     }
 
     /**
@@ -29,7 +29,7 @@ class PositionController extends Controller
     public function create()
     {
 
-        return view('position.create');
+        return view('currency.create');
         
     }
 
@@ -44,20 +44,20 @@ class PositionController extends Controller
 
             $validated = $request->validate([
            
-             'name' => 'required|unique:positions|max:255'
+             'name' => 'required|unique:currencies|max:255'
       
         ]);
 
 
-        $position = new Position;
+        $currency = new currency;
 
-        $position->name = $request->name;
+        $currency->name = $request->name;
 
-        $position->save();
+        $currency->save();
 
-        Session::flash('success', 'New Position added');
+        Session::flash('success', 'New currency added');
 
-        return redirect()->route('position.index');
+        return redirect()->route('currency.index');
 
 
     }
@@ -65,72 +65,72 @@ class PositionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Position  $Position
+     * @param  \App\currency  $currency
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $position = Position::where('id', $id)->first();
+        $currency = Currency::where('id', $id)->first();
 
-        return view('position.show', compact('position'));
+        return view('currency.show', compact('currency'));
 
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Position  $Position
+     * @param  \App\currency  $currency
      * @return \Illuminate\Http\Response
      */
     public function edit( $id)
     {
-          $position = Position::where('id', $id)->first();
+          $currency = Currency::where('id', $id)->first();
 
-        return view('position.edit', compact('position'));
+        return view('currency.edit', compact('currency'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Position  $Position
+     * @param  \App\currency  $currency
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
               $validated = $request->validate([
            
-             'name' => 'required|unique:positions|max:255'
+             'name' => 'required|unique:currencies|max:255'
       
         ]);
 
-    $position = Position::where('id', $id)->first();
+    $currency = Currency::where('id', $id)->first();
 
-        $position->name = $request->name;
+        $currency->name = $request->name;
 
-        $position->save();
+        $currency->save();
 
-        Session::flash('success', 'New Position updated');
+        Session::flash('success', 'New currency updated');
 
-        return redirect()->route('position.index');   
+        return redirect()->route('currency.index');   
 
          }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Position  $Position
+     * @param  \App\currency  $currency
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     { 
 
-        $position = Position::where('id', $id)->first();
+        $currency = Currency::where('id', $id)->first();
 
-        $position->delete();
+        $currency->delete();
  
 
-        Session::flash('success', 'New Position deleted');
+        Session::flash('success', 'New currency deleted');
 
         return redirect()->back();   
     }

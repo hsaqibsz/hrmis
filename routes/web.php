@@ -44,8 +44,16 @@ route::post('/register/profile/step7/{id?}', 'UserController@completeProfile7')-
 route::get('/register/profile/step8/{id?}', 'UserController@completeProfile8')->name('user.complete_profile8');
 
 route::get('/hr/dashboard', 'UserController@dashboard')->name('hr.dashboard');
+route::get('/hr/employees', 'UserController@employees')->name('hr.employees');
 route::get('/hr/user/profile/{id}', 'UserController@profile')->name('user.profile');
 route::get('/hr/user/sort/{a}', 'UserController@sort')->name('user.sort');
 
  
  Route::resource('/category', 'CategoryController');
+ Route::resource('/position', 'PositionController');
+ Route::resource('/department', 'DepartmentController');
+ Route::resource('/region', 'RegionController');
+ Route::resource('/province', 'ProvinceController');
+ Route::resource('/donor', 'DonorController');
+ Route::resource('/project', 'ProjectController');
+ Route::resource('/currency', 'CurrencyController');

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Province;
+use Auth;
+use Session;
 use Illuminate\Http\Request;
 
 class ProvinceController extends Controller
@@ -14,7 +16,9 @@ class ProvinceController extends Controller
      */
     public function index()
     {
-        //
+        $province = Province::all();
+
+        return view('province.index', compact('province'));
     }
 
     /**
@@ -24,7 +28,9 @@ class ProvinceController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('province.create');
+        
     }
 
     /**
@@ -35,7 +41,25 @@ class ProvinceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+            $validated = $request->validate([
+           
+             'name' => 'required|unique:provinces|max:255'
+      
+        ]);
+
+
+        $province = new province;
+
+        $province->name = $request->name;
+
+        $province->save();
+
+        Session::flash('success', 'New province added');
+
+        return redirect()->route('province.index');
+
+
     }
 
     /**
@@ -44,9 +68,12 @@ class ProvinceController extends Controller
      * @param  \App\Province  $province
      * @return \Illuminate\Http\Response
      */
-    public function show(Province $province)
+    public function show($id)
     {
-        //
+        $province = Province::where('id', $id)->first();
+
+        return view('province.show', compact('province'));
+
     }
 
     /**
@@ -55,9 +82,11 @@ class ProvinceController extends Controller
      * @param  \App\Province  $province
      * @return \Illuminate\Http\Response
      */
-    public function edit(Province $province)
+    public function edit( $id)
     {
-        //
+          $province = Province::where('id', $id)->first();
+
+        return view('province.edit', compact('province'));
     }
 
     /**
@@ -67,10 +96,25 @@ class ProvinceController extends Controller
      * @param  \App\Province  $province
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Province $province)
+    public function update(Request $request, $id)
     {
-        //
-    }
+              $validated = $request->validate([
+           
+             'name' => 'required|unique:provinces|max:255'
+      
+        ]);
+
+    $province = Province::where('id', $id)->first();
+
+        $province->name = $request->name;
+
+        $province->save();
+
+        Session::flash('success', 'New province updated');
+
+        return redirect()->route('province.index');   
+
+         }
 
     /**
      * Remove the specified resource from storage.
@@ -78,8 +122,16 @@ class ProvinceController extends Controller
      * @param  \App\Province  $province
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Province $province)
-    {
-        //
+    public function destroy($id)
+    { 
+
+        $province = Province::where('id', $id)->first();
+
+        $province->delete();
+ 
+
+        Session::flash('success', 'New province deleted');
+
+        return redirect()->back();   
     }
 }

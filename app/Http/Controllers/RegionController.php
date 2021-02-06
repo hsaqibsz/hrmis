@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Region;
+use Auth;
+use Session;
 use Illuminate\Http\Request;
 
 class RegionController extends Controller
@@ -14,7 +16,9 @@ class RegionController extends Controller
      */
     public function index()
     {
-        //
+        $region = Region::all();
+
+        return view('region.index', compact('region'));
     }
 
     /**
@@ -24,7 +28,9 @@ class RegionController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('region.create');
+        
     }
 
     /**
@@ -35,7 +41,25 @@ class RegionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+            $validated = $request->validate([
+           
+             'name' => 'required|unique:regions|max:255'
+      
+        ]);
+
+
+        $region = new Region;
+
+        $region->name = $request->name;
+
+        $region->save();
+
+        Session::flash('success', 'New region added');
+
+        return redirect()->route('region.index');
+
+
     }
 
     /**
@@ -44,9 +68,12 @@ class RegionController extends Controller
      * @param  \App\Region  $region
      * @return \Illuminate\Http\Response
      */
-    public function show(Region $region)
+    public function show($id)
     {
-        //
+        $region = Region::where('id', $id)->first();
+
+        return view('region.show', compact('region'));
+
     }
 
     /**
@@ -55,9 +82,11 @@ class RegionController extends Controller
      * @param  \App\Region  $region
      * @return \Illuminate\Http\Response
      */
-    public function edit(Region $region)
+    public function edit( $id)
     {
-        //
+          $region = Region::where('id', $id)->first();
+
+        return view('region.edit', compact('region'));
     }
 
     /**
@@ -67,10 +96,25 @@ class RegionController extends Controller
      * @param  \App\Region  $region
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Region $region)
+    public function update(Request $request, $id)
     {
-        //
-    }
+              $validated = $request->validate([
+           
+             'name' => 'required|unique:regions|max:255'
+      
+        ]);
+
+    $region = Region::where('id', $id)->first();
+
+        $region->name = $request->name;
+
+        $region->save();
+
+        Session::flash('success', 'new region updated');
+
+        return redirect()->route('region.index');   
+
+         }
 
     /**
      * Remove the specified resource from storage.
@@ -78,8 +122,16 @@ class RegionController extends Controller
      * @param  \App\Region  $region
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Region $region)
-    {
-        //
+    public function destroy($id)
+    { 
+
+        $region = Region::where('id', $id)->first();
+
+        $region->delete();
+ 
+
+        Session::flash('success', 'New region deleted');
+
+        return redirect()->back();   
     }
 }

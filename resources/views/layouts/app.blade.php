@@ -132,7 +132,7 @@
                                            </li>
 
                                            <li>
-                                               <a href="#">Employees</a>
+                                               <a href="{{route('hr.employees')}}">Employees</a>
                                            </li>
                                            <li>
                                                <a href="#">Payrols</a>
@@ -160,10 +160,10 @@
                     <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="fa fa-th-large sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Departments</span></a>
                               <ul style="display: none;">
                                   <li>
-                                      <a href="#">List & controls</a>
+                                      <a href="{{route('department.index')}}">List & controls</a>
                                   </li>
                                   <li>
-                                      <a href="#">Add new</a>
+                                      <a href="{{route('department.create')}}">Add new</a>
                                   </li>
                                   
                                   
@@ -175,10 +175,10 @@
                               <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="fa fa-th-large sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Positions</span></a>
                               <ul style="display: none;">
                                   <li>
-                                      <a href="#">List & controls</a>
+                                      <a href="{{route('position.index')}}">List & controls</a>
                                   </li>
                                   <li>
-                                      <a href="#">Add new Position</a>
+                                      <a href="{{route('position.create')}}">Add new Position</a>
                                   </li>
                                 
                                   
@@ -204,11 +204,11 @@
                           <li>
                               <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="fa fa-th-large sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Regions</span></a>
                               <ul style="display: none;">
-                                  <li>
-                                      <a href="#">List & controls</a>
+                                   <li>
+                                      <a href="{{route('region.index')}}">List & controls</a>
                                   </li>
                                   <li>
-                                      <a href="#">Add new Position</a>
+                                      <a href="{{route('region.create')}}">Add new Region</a>
                                   </li>
                                 
                                   
@@ -219,11 +219,11 @@
                             <li>
                               <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="fa fa-th-large sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Provinces</span></a>
                               <ul style="display: none;">
-                                  <li>
-                                      <a href="#">List & controls</a>
+                                   <li>
+                                      <a href="{{route('province.index')}}">List & controls</a>
                                   </li>
                                   <li>
-                                      <a href="#">Add new Position</a>
+                                      <a href="{{route('province.create')}}">Add new Province</a>
                                   </li>
                                 
                                   
@@ -234,11 +234,25 @@
                            <li>
                               <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="fa fa-th-large sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Donors</span></a>
                               <ul style="display: none;">
-                                  <li>
-                                      <a href="#">List & controls</a>
+                                 <li>
+                                      <a href="{{route('donor.index')}}">List & controls</a>
                                   </li>
                                   <li>
-                                      <a href="#">Add new Position</a>
+                                      <a href="{{route('donor.create')}}">Add new Donor</a>
+                                  </li>
+                                
+                                  
+                              </ul>
+                           </li> 
+
+                         <li>
+                              <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="fa fa-th-large sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Currencies</span></a>
+                              <ul style="display: none;">
+                                 <li>
+                                      <a href="{{route('currency.index')}}">List & controls</a>
+                                  </li>
+                                  <li>
+                                      <a href="{{route('currency.create')}}">Add new Currency</a>
                                   </li>
                                 
                                   
@@ -251,10 +265,10 @@
                               <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="fa fa-th-large sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Projects</span></a>
                               <ul style="display: none;">
                                   <li>
-                                      <a href="#">List & controls</a>
+                                      <a href="{{route('project.index')}}">List & controls</a>
                                   </li>
                                   <li>
-                                      <a href="#">Add new Position</a>
+                                      <a href="{{route('project.create')}}">Add new Position</a>
                                   </li>
                                 
                                   

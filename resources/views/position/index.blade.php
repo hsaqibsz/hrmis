@@ -6,7 +6,7 @@
 <div class="block">
     <!-- Responsive Full Title -->
     <div class="block-title">
-        <h2><strong>Categories</strong> List</h2>
+        <h2><strong>Positions</strong> List</h2>
     </div>
     <!-- END Responsive Full Title -->
 
@@ -17,23 +17,23 @@
             <thead>
                 <tr>
                      <th>No</th>
-                    <th>Category Name</th>
+                    <th>Position Name</th>
                     <th style="width: 150px;" class="text-center">Actions</th>
                 </tr>
             </thead>
             <tbody>
 
-              @foreach($category as $category)
+              @foreach($position as $position)
                 <tr>
                   
                     <td> {{$loop->index+1 }}</td>
-                    <td>{{$category->name}}</td>
+                    <td>{{$position->name}}</td>
                    
                     <td class="text-center">
                         <div class="btn-group btn-group-xs">
-                            <a href="{{route('category.edit', $category->id)}}" data-toggle="tooltip" title="Edit" class="btn btn-default "><i class="fa fa-pencil"></i></a>
+                            <a href="{{route('position.edit', $position->id)}}" data-toggle="tooltip" title="Edit" class="btn btn-default "><i class="fa fa-pencil"></i></a>
 
-                             <form method="post" action="{{route('category.destroy', $category->id)}}">
+                             <form method="post" action="{{route('position.destroy', $position->id)}}">
                                @csrf
                                {{method_field('DELETE')}}
                               <button type="submit"data-toggle="tooltip" title="Delete" class="btn btn-danger btn-sm text-center" style="max-width: 10px; min-height: 8px;"> <i class="fa fa-times pull-left"></i></button>

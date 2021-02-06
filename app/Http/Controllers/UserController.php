@@ -17,17 +17,22 @@ class UserController extends Controller
 
   /*open register form*/
 
+ 
+
+
+
   public function new()
   {
     return view('auth.register');
   }
-
-
-
-
+ 
+ public function employees()
+ {
+  $employees = User::paginate(10);
   
+  return view('hr.employee.index', compact('employees'));
 
-
+ }
 
   public function update(request $request, $id)
   {
@@ -318,7 +323,7 @@ if (!Auth::check()) {
         if ($request->avatar !== null) {
             $file_avatar = $request->file('avatar');
             $file_avatar_name = uniqid().$file_avatar->getClientOriginalName();
-            $path = base_path("uploads/hr/avatar/".date('Y')."/".date('M'));
+            $path = base_path("public/uploads/hr/avatar/".date('Y')."/".date('M'));
             $file_avatar->move($path, $file_avatar_name);
      
         } 
@@ -329,7 +334,7 @@ if (!Auth::check()) {
         if ($request->resume!== null) {
             $file_resume = $request->file('resume');
             $file_resume_name = uniqid().$file_resume->getClientOriginalName();
-            $path = base_path("uploads/hr/resume/".date('Y')."/".date('M'));
+            $path = base_path("public/uploads/hr/resume/".date('Y')."/".date('M'));
             $file_resume->move($path, $file_resume_name);
         
         }
@@ -340,7 +345,7 @@ if (!Auth::check()) {
         if ($request->NIC!== null) {
             $file_NIC = $request->file('NIC');
             $file_NIC_name = uniqid().$file_NIC->getClientOriginalName();
-            $path = base_path("uploads/hr/NIC/".date('Y')."/".date('M'));
+            $path = base_path("public/uploads/hr/NIC/".date('Y')."/".date('M'));
             $file_NIC->move($path, $file_NIC_name);
         
         }
@@ -351,7 +356,7 @@ if (!Auth::check()) {
              if ($request->passport!== null) {
                  $file_passport = $request->file('passport');
                  $file_passport_name = uniqid().$file_passport->getClientOriginalName();
-                 $path = base_path("uploads/hr/passport/".date('Y')."/".date('M'));
+                 $path = base_path("public/uploads/hr/passport/".date('Y')."/".date('M'));
                  $file_passport->move($path, $file_passport_name);
              
              }
