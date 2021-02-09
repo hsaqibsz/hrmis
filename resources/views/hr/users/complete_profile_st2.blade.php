@@ -41,7 +41,7 @@
                      <div class="form-group">
                                <label class="col-md-4 control-label">Degree</label>
                                <div class="col-md-6">
-                       <input type="text" name="degree" class="form-control" placeholder="Master of Science in computer Science" value="{{$profile->degree}}">
+                       <input type="text" name="degree" class="form-control" placeholder="Master of Science in computer Science" value="{{old('degree')}}">
                      </div>
                   </div>
 
@@ -51,7 +51,7 @@
                             <label class="col-md-4 control-label">Institution/University</label>
                             <div class="col-md-6">
 
-                       <input type="text" name="university" class="form-control" placeholder="Kabul University" value="{{$profile->university}}">
+                       <input type="text" name="university" class="form-control" placeholder="Kabul University" value="{{old('university')}}">
                    </div>
                </div>
 
@@ -59,13 +59,13 @@
                         <div class="form-group">
                                   <label class="col-md-4 control-label">Location</label>
                                   <div class="col-md-6">
-                                    <input type="text" name="location" class="form-control" placeholder="Kabul, Afghanistan" value="{{$profile->location}}">
+                                    <input type="text" name="location" class="form-control" placeholder="Kabul, Afghanistan" value="{{old('location')}}">
                             </div>
 
                        <div class="form-group">
                                  <label class="col-md-4 control-label">Date From</label>
                                  <div class="col-md-6">
-                                 <input type="text" name="from" class="form-control input-datepicker" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd" value="{{$profile->from}}" >
+                                 <input type="text" name="from" class="form-control input-datepicker" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd" value="{{old('from')}}" >
 
                            </div>
                        </div> 
@@ -73,7 +73,7 @@
                         <div class="form-group">
                                  <label class="col-md-4 control-label">Date to</label>
                                  <div class="col-md-6">
-                                 <input type="text" name="to" class="form-control input-datepicker" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd" value="{{$profile->phone}}" value="{{$profile->to}}" >
+                                 <input type="text" name="to" class="form-control input-datepicker" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd"  value="{{old('to')}}" >
 
                            </div>
                        </div>
@@ -100,71 +100,72 @@
                         <input type="text" name="deploma" class="form-control" placeholder="https://www.kabulUniversity.edu.af/certificate/9494949">
                     </div>
                 </div>
- 
-                                             <!-- END Step Info -->
-                                            
- 
-                                             <!-- Form Buttons -->
-                                             <div class="form-group form-actions">
 
-                                                 <div class="col-md-8 col-md-offset-4">
-                                                     <button onclick="" class="btn btn-sm btn-warning ui-wizard-content ui-formwizard-button">Back</button>
+                <!-- END Step Info -->
+            
 
-                                                     <input type="submit" class="btn btn-sm btn-primary ui-wizard-content ui-formwizard-button" id="next" value="Save & Go to new Record">
+                <!-- Form Buttons -->
+                <div class="form-group form-actions">
 
-                                                     <a href="{{route('user.OpenExperience', $profile->user_id)}}" class="btn btn-sm btn-primary ui-wizard-content ui-formwizard-button" > Go to Experience</a>
-                                                 </div>
-                                             </div>
-                                             <!-- END Form Buttons -->
+                    <div class="col-md-8 col-md-offset-4">
+                        <button onclick="" class="btn btn-sm btn-warning ui-wizard-content ui-formwizard-button">Back</button>
 
-                                         </div>
-                                     </form>
-                            
-                                 
-                                     <!-- END Basic Wizard Content -->
-                                 </div>
+                        <input type="submit" class="btn btn-sm btn-primary ui-wizard-content ui-formwizard-button" id="next" value="Save / Go to new Record">
 
+                        <a href="{{route('user.OpenExperience', $profile->user_id)}}" class="btn btn-sm btn-primary ui-wizard-content ui-formwizard-button" > Go to Experience</a>
+                    </div>
+                </div>
+                <!-- END Form Buttons -->
 
+            </div>
+        </form>
+
+    
+        <!-- END Basic Wizard Content -->
+    </div>
 
 
-                                 <!--    show educations -->
-
-                                        <div class="block">
-
-                                         <!-- Basic Wizard Title -->
-                                         <div class="block-title">
-                                            <h2><strong>{{$profile->user->name}}'s</strong> Educations</h2>
-                                         </div>
-                                         <!-- END Basic Wizard Title -->
-
-                                     <table class="table table-hover">
-
-                                         <tr>
-                                             <th>Degree</th>
-                                             <th>Universty/College</th>
-                                             <th>Location</th>
-                                             <th> From</th>
-                                             <th> To</th>
-                                             <th>Completed</th>
-                                              <th>Deploma</th>  
-                                         </tr>
-
-                                         @foreach($profile->user->education as $education)
-                                         <tr>
-                                            <td>{{$education->degree}}</td>
-                                             <td>{{$education->university}}</td>
-                                             <td>{{$education->location}}</td>
-                                             <td> {{$education->from}}</td>
-                                             <td> {{$education->to}}</td>
-                                             <td>@if($education->completed == 0) Not Completed @else Completed @endif</td>
-                                          @if($education->completed !== 0)   <td><a href="{{$education->deploma}}">Download</a></td>@else<td> not available </td> @endif
-                                         </tr>
-                                         @endforeach
-                                         
-                                   </table>
 
 
-                                        </div>
+    <!--    show educations -->
+
+        <div class="block">
+
+            <!-- Basic Wizard Title -->
+            <div class="block-title">
+            <h2><strong>{{$profile->user->name}}'s</strong> Educations</h2>
+            </div>
+            <!-- END Basic Wizard Title -->
+
+        <table class="table table-hover">
+
+            <tr>
+                <th>SN</th>
+                <th>Degree</th>
+                <th>Universty/College</th>
+                <th>Location</th>
+                <th> From</th>
+                <th> To</th>
+                <th>Completed</th>
+                <th>Deploma</th>  
+            </tr>
+
+            @foreach($profile->user->education as $education)
+            <tr>
+            <td>{{$loop->index + 1}}</td>
+            <td>{{$education->degree}}</td>
+                <td>{{$education->university}}</td>
+                <td>{{$education->location}}</td>
+                <td> {{$education->from}}</td>
+                <td> {{$education->to}}</td>
+                <td>@if($education->completed == 0) Not Completed @else Completed @endif</td>
+            @if($education->completed !== 0)   <td><a href="{{$education->deploma}}">Download</a></td>@else<td> not available </td> @endif
+            </tr>
+            @endforeach
+            
+    </table>
+           
+</div>
 
          <script type="text/javascript">
            function back()

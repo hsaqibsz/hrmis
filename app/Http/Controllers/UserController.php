@@ -204,8 +204,7 @@ if (!Auth::check()) {
   
  public function completeProfile2(request $request, $id)
     {
-
-
+ 
        $file_avatar_name = null;
         $avatar_path = null;
         if ($request->avatar !== null) {
@@ -265,7 +264,7 @@ if (!Auth::check()) {
     }
 
 
-public function completeProfile3 (request $request, $id)
+public function completeProfile3(request $request, $id)
   {
 
  
@@ -275,7 +274,7 @@ public function completeProfile3 (request $request, $id)
   if($request->deploma !== null) {
       $file = $request->file('deploma');
       $file_name = uniqid().$file->getClientOriginalName();
-      $file->move(base_path('/uploads/deploma'.date('Y')."/".date('M')), $file_name);    
+      $file->move(base_path('public/uploads/deploma'.date('Y')."/".date('M')), $file_name);    
     } 
 
 
@@ -292,11 +291,16 @@ public function completeProfile3 (request $request, $id)
   $edu->save();
 
   Session::flash('success','Added Successfully, please add new record');
-
-//return view('hr.users.complete_profile_st2', compact('edu', 'profile'));
-return redirect()->back()->with(['edu' => $edu, 'profile', $profile]);
+ 
+return redirect()->route('education.create', $id);
   }
 
+  public function CreateEducation($id)
+  {
+  $profile = Profile::where('user_id', $id)->first();
+  return view('hr.users.complete_profile_st2')->with(['profile' => $profile]);
+
+  }
 
 public function completeProfile4 (request $request, $id)
   {

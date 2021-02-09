@@ -42,7 +42,7 @@
                      <div class="form-group">
                                <label class="col-md-4 control-label">Degree</label>
                                <div class="col-md-6">
-                       <input type="text" name="degree" class="form-control" placeholder="Master of Science in computer Science" value="{{$profile->degree}}">
+                       <input type="text" name="degree" class="form-control" placeholder="Master of Science in computer Science" value="{{old('degree')}}">
                      </div>
                   </div>
 
@@ -52,7 +52,7 @@
                             <label class="col-md-4 control-label">Institution/University</label>
                             <div class="col-md-6">
 
-                       <input type="text" name="university" class="form-control" placeholder="Kabul University" value="{{$profile->university}}">
+                       <input type="text" name="university" class="form-control" placeholder="Kabul University" value="{{old('university')}}">
                    </div>
                </div>
 
@@ -60,13 +60,13 @@
                         <div class="form-group">
                                   <label class="col-md-4 control-label">Location</label>
                                   <div class="col-md-6">
-                                    <input type="text" name="location" class="form-control" placeholder="Kabul, Afghanistan" value="{{$profile->location}}">
+                                    <input type="text" name="location" class="form-control" placeholder="Kabul, Afghanistan" value="{{old('location')}}">
                             </div>
 
                        <div class="form-group">
                                  <label class="col-md-4 control-label">Date From</label>
                                  <div class="col-md-6">
-                                 <input type="text" name="from" class="form-control input-datepicker" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd" value="{{$profile->from}}" >
+                                 <input type="text" name="from" class="form-control input-datepicker" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd" value="{{old('from')}}" >
 
                            </div>
                        </div> 
@@ -74,7 +74,7 @@
                         <div class="form-group">
                                  <label class="col-md-4 control-label">Date to</label>
                                  <div class="col-md-6">
-                                 <input type="text" name="to" class="form-control input-datepicker" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd" value="{{$profile->phone}}" value="{{$profile->to}}" >
+                                 <input type="text" name="to" class="form-control input-datepicker" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd" value="{{old('to')}}" value="{{$profile->to}}" >
 
                            </div>
                        </div>
