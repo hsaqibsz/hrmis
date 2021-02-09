@@ -22,7 +22,7 @@ class CreateEducationTable extends Migration
             $table->date('from')->nullable();
             $table->date('to')->nullable();
             $table->integer('completed')->default(0);
-            $table->string('deploma')->nullable();
+           // $table->string('deploma')->nullable(); // deploma should be uploaded uner the documents tab
             $table->timestamps();
         });
     }

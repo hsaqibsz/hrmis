@@ -33,6 +33,10 @@
                     <div class="col-xs-2 ">
                         <span>3. Experience </span>
                     </div>
+
+                    <div class="col-xs-2 ">
+                          <span> 4. Documents  </span>
+                        </div>
                     
                 </div>
             </div>

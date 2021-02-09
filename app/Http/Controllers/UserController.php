@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Education;
-use App\Experience;
-use App\Profile;
+use Auth;
+use Session;
 use App\Task;
 use App\User;
-use Auth;
+use App\Profile;
+use App\Documents;
+use App\Education;
+use App\Experience;
 use Illuminate\Http\Request;
-use Session;
 
 class UserController extends Controller
 {
@@ -269,13 +270,7 @@ public function completeProfile3(request $request, $id)
 
  
      $profile = Profile::where('user_id', $id)->first();
-     $file_name = null;
-
-  if($request->deploma !== null) {
-      $file = $request->file('deploma');
-      $file_name = uniqid().$file->getClientOriginalName();
-      $file->move(base_path('public/uploads/deploma'.date('Y')."/".date('M')), $file_name);    
-    } 
+ 
 
 
   $edu = new Education;
@@ -286,7 +281,7 @@ public function completeProfile3(request $request, $id)
   $edu->from = $request->from;
   $edu->to = $request->to;
   $edu->completed = $request->completed;
-  $edu->deploma = '/uploads/deploma/'.date('Y')."/".date('M')."/".$file_name;
+ // $edu->deploma = '/uploads/deploma/'.date('Y')."/".date('M')."/".$file_name;
 
   $edu->save();
 
@@ -339,7 +334,60 @@ public function OpenExperience($id)
 {
 
   $profile = Profile::where('user_id', $id)->first();
-  return view('hr.users.complete_profile_st6', compact('profile'));
+  return view('hr.users.complete_profile_st3_experience', compact('profile'));
+
+}
+
+
+public function CreateDocuments($id)
+{
+  $profile = Profile::where('user_id', $id)->first();
+  $user_documents = Documents::where('user_id', $id)->get();
+
+  return view('hr.users.complete_profile_st4_upload', compact('profile', 'user_documents'));
+ 
+}
+
+public function StoreDocuments(request $request, $id)
+{
+
+   
+
+   $file_document_name = null;
+        $document_path = null;
+        if ($request->file !== null) {
+            $file_document = $request->file('file');
+            $file_document_name = uniqid().$file_document->getClientOriginalName();
+            $path = base_path("public/uploads/hr/documents/".date('Y')."/".date('M'));
+            $file_document->move($path, $file_document_name);
+     
+        }
+
+
+      $validatedData = $request->validate([
+              'label' => 'required',
+              'category_id' => 'required'
+             
+          ]);
+ 
+        
+       
+
+    $document = new Documents;
+      $document->user_id = $id;
+      $document->category_id = $request->category_id;
+      $document->label = $request->label;
+      $document->hard_file_address = $request->hard_file_address;
+ if($request->file !== null){
+        $document->file =  "/uploads/hr/documents/".date('Y')."/".date('M')."/".$file_document_name;
+          
+          } 
+
+    $document->save();
+    Session::flash('success', 'file uploaded successfully');
+
+    $user_documents = Documents::where('user_id', $id)->get();
+    return redirect()->back()->with(['user_documents' => $user_documents]);
 
 }
 

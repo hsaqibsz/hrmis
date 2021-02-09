@@ -31,6 +31,11 @@
                                 <div class="col-xs-2 ">
                                     <span>3. Experience </span>
                                 </div>
+
+                                <div class="col-xs-2 ">
+                                    
+                                 <span>4. Documents  </span>
+                             </div>
                                 
                             </div>
                         </div>
@@ -85,21 +90,7 @@
                         </div>
                       </div>
 
-
-
-                        <div class="form-group">
-                                 <label class="col-md-4 control-label">Deploma</label>
-                                 <div class="col-md-6">
-                                    <input type="file" name="deploma" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                             <label class="col-md-4 control-label">Or Past URL, Deploma:</label>
-                             <div class="col-md-6">
-                        <input type="text" name="deploma" class="form-control" placeholder="https://www.kabulUniversity.edu.af/certificate/9494949">
-                    </div>
-                </div>
+ 
 
                 <!-- END Step Info -->
             
@@ -146,8 +137,8 @@
                 <th>Location</th>
                 <th> From</th>
                 <th> To</th>
-                <th>Completed</th>
-                <th>Deploma</th>  
+                
+                 
             </tr>
 
             @foreach($profile->user->education as $education)
@@ -158,8 +149,7 @@
                 <td>{{$education->location}}</td>
                 <td> {{$education->from}}</td>
                 <td> {{$education->to}}</td>
-                <td>@if($education->completed == 0) Not Completed @else Completed @endif</td>
-            @if($education->completed !== 0)   <td><a href="{{$education->deploma}}">Download</a></td>@else<td> not available </td> @endif
+                
             </tr>
             @endforeach
             

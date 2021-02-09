@@ -32,7 +32,11 @@
                             
 
                              <div class="col-xs-2 active">
-                                 <span>6. Experience </span>
+                                 <span>3. Experience </span>
+                             </div>
+                           
+                             <div class="col-xs-2 ">
+                                 <span>4. Documents  </span>
                              </div>
                             
                       
@@ -140,7 +144,7 @@
                                                      <button onclick="" class="btn btn-sm btn-warning ui-wizard-content ui-formwizard-button">Back</button>
 
                                                      <input type="submit" class="btn btn-sm btn-primary ui-wizard-content ui-formwizard-button" id="next" value="Save and new record">
-                                                     <a href="#" class="btn btn-sm btn-primary ui-wizard-content ui-formwizard-button">Go to documents upload</a>
+                                                     <a href="{{route('documents.create', $profile->user_id)}}" class="btn btn-sm btn-primary ui-wizard-content ui-formwizard-button">Go to documents upload</a>
                                               @if($profile->user->experience->count()>1)
                                                      <a href="{{route('user.profile', $profile->user_id)}}" class="btn btn-sm btn-primary ui-wizard-content ui-formwizard-button"> Go to Profile</a>
                                                 @endif
@@ -176,8 +180,8 @@
                                       <th>Salary/Currency</th>
                                       <th> From</th>
                                       <th> To</th>
-                                      
-                                        
+                                      <th> Actions</th>
+            
                                   </tr>
 
                                   @foreach($profile->user->experience as $experience)
@@ -193,15 +197,19 @@
                                       <td> Still working here</td>
                                       @endif
                                        
+                                      <td class="text-center">
+                                                <div class="btn-group btn-group-xs">
+                                                    <a href="javascript:void(0)" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+                                                    <a href="javascript:void(0)" data-toggle="tooltip" title="" class="btn btn-danger" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                                                    <a href="javascript:void(0)" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="Show Detials"><i class="fa fa-th-large"></i></a>
+                                                </div>
+                                            </td>
                                   </tr>
+                                   
                                   @endforeach
                                   
                             </table>
-
-
                                  </div>
-
-
 
          <script type="text/javascript">
            function back()

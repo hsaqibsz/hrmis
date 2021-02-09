@@ -35,12 +35,16 @@ route::post('/user/profile/update/{id}', 'UserController@update')->name('user.up
 
 route::get('/register/profile/{id?}/', 'UserController@completeProfile1')->name('user.complete_profile1');
 route::post('/register/profile/step2/{id?}', 'UserController@completeProfile2')->name('user.complete_profile2');
-route::get('/register/profile/step2/{id?}', 'UserController@CreateEducation')->name('education.create');
-route::post('/register/profile/step3/{id?}', 'UserController@completeProfile3')->name('user.complete_profile3');
-route::post('/register/profile/step4/{id?}', 'UserController@completeProfile4')->name('user.complete_profile4');
-route::post('/register/profile/step5/{id?}', 'UserController@completeProfile5')->name('user.complete_profile5');
+route::get('/register/profile/step3/education/{id?}', 'UserController@CreateEducation')->name('education.create');
+route::post('/register/profile/step3/education/{id?}', 'UserController@completeProfile3')->name('user.complete_profile3');
+route::post('/register/profile/step4/experience/{id?}', 'UserController@completeProfile4')->name('user.complete_profile4');
+route::get('/register/profile/step4/experience/{id?}', 'UserController@OpenExperience')->name('user.OpenExperience');
+route::get('/register/profile/step5/documentsupload/{id?}', 'UserController@CreateDocuments')->name('documents.create');
+route::post('/register/profile/step5/documentsupload/{id?}', 'UserController@StoreDocuments')->name('documents.store');
+
+
+
 route::post('/register/profile/step6/{id?}', 'UserController@completeProfile6')->name('user.complete_profile6');
-route::get('/register/profile/step7/{id?}', 'UserController@OpenExperience')->name('user.OpenExperience');
 route::post('/register/profile/step7/{id?}', 'UserController@completeProfile7')->name('user.complete_profile7');
 route::get('/register/profile/step8/{id?}', 'UserController@completeProfile8')->name('user.complete_profile8');
 
