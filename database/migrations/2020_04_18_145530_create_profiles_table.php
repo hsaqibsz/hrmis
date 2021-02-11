@@ -58,11 +58,11 @@ class CreateProfilesTable extends Migration
              /*social media addresses*/
             
             //HR information
-            $table->string('department_id')->nullable();
+            $table->integer('department_id')->nullable();
             $table->string('country')->default('Afghanistan');
-            $table->string('region_id')->nullable();
-            $table->string('province_id')->nullable();
-            $table->string('position_id')->nullable();
+            $table->integer('region_id')->nullable();
+            $table->integer('province_id')->nullable();
+            $table->integer('position_id')->nullable();
             $table->string('join_date')->nullable();
             $table->string('expiry_date')->nullable();
           

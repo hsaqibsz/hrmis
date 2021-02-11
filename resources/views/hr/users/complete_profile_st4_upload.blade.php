@@ -20,22 +20,22 @@
          
                   <div class="row">
 
-                             <div class="col-xs-2  done">
-                                 <span><i class="fa fa-check"></i></span>                                     
-                             </div>
+                    <div class="col-xs-2  done">
+                        <span><i class="fa fa-check"></i></span>                                     
+                    </div>
 
-                                <div class="col-xs-2  done ">
-                                    <span><i class="fa fa-check"></i></span>             
-                                </div>
+                    <div class="col-xs-2  done ">
+                        <span><i class="fa fa-check"></i></span>             
+                    </div>
 
-                             <div class="col-xs-2 done">
-                                 <span><i class="fa fa-check"></i> </span>
-                             </div>
-                           
-                             <div class="col-xs-2  active">
-                                 <span>4. Documents  </span>
-                             </div>
-                         </div>
+                    <div class="col-xs-2 done">
+                        <span><i class="fa fa-check"></i> </span>
+                    </div>
+                
+                    <div class="col-xs-2  active">
+                        <span>4. Documents  </span>
+                    </div>
+                </div>
 
             </div>
             <!-- END Step Info -->
@@ -89,6 +89,9 @@
             <div class="col-md-8 col-md-offset-4">
                 <input type="reset" class="btn btn-sm btn-warning ui-wizard-content ui-formwizard-button" id="back" value="Back" disabled="disabled">
                 <input type="submit" class="btn btn-sm btn-primary ui-wizard-content ui-formwizard-button" id="next" value="Save & Next">
+                @if($user_documents->count()>1)
+            <a href="{{route('user.profile', $profile->user_id)}}" class="btn btn-sm btn-success"> Go to Profile</a>
+                @endif
             </div>
         </div>
 
@@ -120,7 +123,7 @@
             <th>SN</th>
             <th>Label</th>
             <th>Hard file location</th>
-            <th>Download</th>     
+            <th>View</th>     
             <th>Actions</th>  
       </tr>
 
@@ -129,7 +132,9 @@
       <td>{{$loop->index + 1}}</td>
       <td>{{$document->label}}</td>
             <td>{{$document->hard_file_address}}</td>
-            <td><a href="{{$document->file}}"> Download </a></td>
+            <td><a href="{{$document->file}}"> View </a></td>
+           
+            </td>
              <td class="text-center">
                   <div class="btn-group btn-group-xs">
                         <a href="javascript:void(0)" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Edit"><i class="fa fa-pencil"></i></a>

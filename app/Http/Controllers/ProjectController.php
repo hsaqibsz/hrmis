@@ -48,7 +48,7 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
       
-
+ 
        $project = new Project;
        $project->name = $request->name;
        $project->code = $request->code;
@@ -60,11 +60,11 @@ class ProjectController extends Controller
        $project->donor_id = $request->donor_id;
        $project->Total_budget = $request->Total_budget;
        $project->Total_salaries = $request->Total_salaries;
-       $project->currency = $request->currency;
+       $project->currency_id = $request->currency_id;
        $project->location = $request->location;
        $project->description = $request->description;
        $project->goals = $request->goals;
-       $project->focal_point_id = $request->focal_point_id;
+       $project->user_id = $request->user_id;
 
        $project->save();
 
@@ -79,9 +79,11 @@ class ProjectController extends Controller
      * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
+    public function show($id)
     {
-        //
+       $project = Project::where('id', $id)->first();
+       return view('project.show', compact('project'));
+        
     }
 
     /**
@@ -122,11 +124,11 @@ class ProjectController extends Controller
        $project->donor_id = $request->donor_id;
        $project->Total_budget = $request->Total_budget;
        $project->Total_salaries = $request->Total_salaries;
-       $project->currency = $request->currency;
+       $project->currency_id = $request->currency_id;
        $project->location = $request->location;
        $project->description = $request->description;
        $project->goals = $request->goals;
-       $project->focal_point_id = $request->focal_point_id;
+       $project->user_id = $request->user_id;
 
        $project->save();
 

@@ -26,11 +26,11 @@ class CreateProjectsTable extends Migration
            $table->string('donor_id')->unique();
            $table->integer('Total_budget');
            $table->integer('Total_salaries');
-           $table->string('currency');
+           $table->string('currency_id');
            $table->text('location');
            $table->text('description')->nullable();
            $table->text('goals');
-           $table->integer('focal_point_id');
+           $table->integer('user_id');
         $table->timestamps();
 
         });

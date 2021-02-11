@@ -16,11 +16,12 @@ class CreateContractsTable extends Migration
         Schema::create('contracts', function (Blueprint $table) {
             $table->increments('id');
                         //Financial/contract Information
-                        $table->string('user_id');
-                        $table->string('region_id');
-                        $table->string('province_id');
-                        $table->string('project_id');
-                        $table->string('position_id');
+                        $table->integer('user_id');
+                        $table->integer('region_id');
+                        $table->integer('province_id');
+                        $table->integer('project_id');
+                        $table->integer('position_id');
+                        $table->string('Title_this_project');
                         $table->string('bank_account_number');
                         $table->string('scan_bank_account_card');
                         $table->string('scan_contract');

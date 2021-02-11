@@ -21,7 +21,7 @@
                     <th>Project Budget</th>
                     <th>Project location</th>
                     <th>Completion date</th>
-                    <th style="width: 150px;" class="text-center">Actions</th>
+                    <th style="width: 150px;" class="text-center" colspan="3">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,14 +35,15 @@
                     <td>{{$project->location}}</td>
                     <td>{{$project->completion_date}}</td>
                    
-                    <td class="text-center">
+                    <td class="text-center" colspan="3" >
                         <div class="btn-group btn-group-xs">
                             <a href="{{route('project.edit', $project->id)}}" data-toggle="tooltip" title="Edit" class="btn btn-default "><i class="fa fa-pencil"></i></a>
+                            <a href="{{route('project.show', $project->id)}}" data-toggle="tooltip" title="Show Detials" class="btn btn-success"><i class="fa fa-th-large"></i></a>
 
                              <form method="post" action="{{route('project.destroy', $project->id)}}">
                                @csrf
                                {{method_field('DELETE')}}
-                              <button type="submit"data-toggle="tooltip" title="Delete" class="btn btn-danger btn-sm text-center" style="max-width: 10px; min-height: 8px;"> <i class="fa fa-times pull-left"></i></button>
+                              <button type="submit"data-toggle="tooltip" title="Delete" class="btn btn-danger btn-sm text-center" > <i class="fa fa-times pull-left"></i></button>
                             </form>
                         </div>
                     </td>

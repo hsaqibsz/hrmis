@@ -249,14 +249,10 @@
        <div class="form-group">
            <label class="col-md-4 control-label" for="example-facebook">Department</label>
            <div class="col-md-6">
-              <select name="department" class="form-control">                 
-                <option @if($profile->department == 'Program Development') selected @endif  value="Program Development">Program Development</option>
-                <option @if($profile->department == 'Humanitarian') selected @endif  value="Humanitarian">Humanitarian</option>
-                <option @if($profile->department == 'Admin/Finance') selected @endif  value="Admin/Finance">Admin/Finance</option>
-                <option @if($profile->department == 'Human Resource') selected @endif  value="Human Resource">Human Resource</option>
-                <option @if($profile->department == 'MEAL') selected @endif  value="MEAL">MEAL</option>
-                <option @if($profile->department == 'Supply') selected @endif  value="Supply">Supply</option>
-                <option @if($profile->department == 'MIS') selected @endif  value="MIS">MIS</option>
+              <select name="department_id" class="form-control"> 
+             @foreach($Shared_departments as $department)                
+                <option @if($profile->department_id ==  $department->id) selected @endif  value="{{$department->id}}">{{$department->name}}</option>
+               @endforeach  
                 </select>
              </div>
          </div> 

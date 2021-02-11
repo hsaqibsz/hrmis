@@ -138,11 +138,11 @@
          <div class="form-group">
                  <label class="col-md-4 control-label" for="focal_point">Select focal point</label>
                   <div class="col-md-6">
-                   <select id="focal_point_id" name="focal_point_id" class="select-select2 select2-hidden-accessible" style="width: 100%;" data-placeholder="Choose one.." tabindex="-1" aria-hidden="true">
+                   <select id="user_id" name="user_id" class="select-select2 select2-hidden-accessible" style="width: 100%;" data-placeholder="Choose one.." tabindex="-1" aria-hidden="true">
                        <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                       
                        @foreach($users as $user)
-                         <option value="{{$user->id}}" @if($user->id == $project->focal_point_id) selected @endif> {{$user->name}} </option>
+                         <option value="{{$user->id}}" @if($user->id == $project->user_id) selected @endif> {{$user->name}} </option>
                        @endforeach
                    </select>
 
