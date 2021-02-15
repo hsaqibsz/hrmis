@@ -40,10 +40,12 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         View::share('Shared_users', User::all());
         View::share('Shared_categories', Category::all());
-        View::share('Shared_position', Position::all());
+        View::share('Shared_positions', Position::all());
         View::share('Shared_currencies', Currency::all());
         View::share('Shared_departments', Department::all());
         View::share('Shared_donors', Donor::all());
+        View::share('Shared_regions', Region::all());
+        View::share('Shared_provinces', Province::all());
 
     }
 }

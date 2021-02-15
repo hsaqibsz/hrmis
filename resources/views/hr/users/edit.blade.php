@@ -143,21 +143,21 @@
                       <div class="form-group">
                           <label class="col-md-4 control-label" for="example-firstname">Permanent Village *</label>
                           <div class="col-md-6">
-                               <input type="text" id="permanent_village"  value="{{$profile->permanent_village}}" name="permanent_village" class="form-control ui-wizard-content" placeholder="Your Parmanent Village."z>
+                               <input type="text" id="permanent_village"  value="{{$profile->permanent_village or old('permanent_village')}}" name="permanent_village" class="form-control ui-wizard-content" placeholder="Your Parmanent Village."z>
                           </div>
                       </div>
 
                       <div class="form-group">
                           <label class="col-md-4 control-label" for="example-firstname">Permanent district *</label>
                           <div class="col-md-6">
-                               <input required type="text" id="permanent_district"  value="{{$profile->permanent_district}}" name="permanent_district" class="form-control ui-wizard-content" placeholder="Your Parmanent district.">
+                               <input required type="text" id="permanent_district"  value="{{$profile->permanent_district or old('permanent_district')}}" name="permanent_district" class="form-control ui-wizard-content" placeholder="Your Parmanent district.">
                           </div>
                       </div>
 
                       <div class="form-group">
                           <label class="col-md-4 control-label" for="example-firstname">Permanent Province *</label>
                           <div class="col-md-6">
-                               <input required type="text" id="permanent_province"  value="{{$profile->permanent_province}}" name="permanent_province" class="form-control ui-wizard-content" placeholder="Your Parmanent province.">
+                               <input required type="text" id="permanent_province"  value="{{$profile->permanent_province}} or old('permanent_province')" name="permanent_province" class="form-control ui-wizard-content" placeholder="Your Parmanent province.">
                           </div>
                       </div>
 
@@ -168,21 +168,21 @@
                       <div class="form-group">
                           <label class="col-md-4 control-label" for="example-firstname">Current Village *</label>
                           <div class="col-md-6">
-                               <input required type="text" id="current_village"  value="{{$profile->current_village}}" name="current_village" class="form-control ui-wizard-content" placeholder="Your Parmanent Village.">
+                               <input required type="text" id="current_village"  value="{{$profile->current_village or old('current_village')}}" name="current_village" class="form-control ui-wizard-content" placeholder="Your Parmanent Village.">
                           </div>
                       </div>
 
                       <div class="form-group">
                           <label class="col-md-4 control-label" for="example-firstname">Current district *</label>
                           <div class="col-md-6">
-                               <input required type="text" id="current_district"  value="{{$profile->current_district}}" name="current_district" class="form-control ui-wizard-content" placeholder="Your Parmanent district.">
+                               <input required type="text" id="current_district"  value="{{$profile->current_district or old('current_district')}}" name="current_district" class="form-control ui-wizard-content" placeholder="Your Parmanent district.">
                           </div>
                       </div>
 
                       <div class="form-group">
                           <label class="col-md-4 control-label" for="example-firstname">Current Province *</label>
                           <div class="col-md-6">
-                               <input required type="text" id="current_province"  value="{{$profile->current_province}}" name="current_province" class="form-control ui-wizard-content" placeholder="Your Parmanent province.">
+                               <input required type="text" id="current_province"  value="{{$profile->current_province or old('current_province')}}" name="current_province" class="form-control ui-wizard-content" placeholder="Your Parmanent province.">
                           </div>
                       </div>
                        
@@ -196,48 +196,48 @@
 
 
                 <!-- step four -->
-                <div class="form-group">
-                      <label class="col-md-4 control-label">Your Brief Bio with Habits and Interests</label>
-                      <div class="col-md-6">
-                          <textarea class="form-control" name="habit_interests" required="true">{{$profile->habit_interests}}</textarea>
-                      </div>
-                  </div>
+<div class="form-group">
+    <label class="col-md-4 control-label">Your Brief Bio with Habits and Interests</label>
+    <div class="col-md-6">
+        <textarea class="form-control" name="habit_interests" required="true">{{$profile->habit_interests or old('habit_interests')}}</textarea>
+    </div>
+</div>
 
 
-                    <div class="form-group">
-                            <label class="col-md-4 control-label" for="it_skills">IT Skills</label>
-                            <div class="col-md-6">
-                                <select id="it_skills" name="it_skills" class="form-control" data-placeholder="Choose a Category.." required="true">
-                                  <option disabled="true">Select IT Skills</option>
-                                     <option value="1" @if($profile->it_skills == 1) selected="true" @endif>Poor</option>
-                                     <option value="2" @if($profile->it_skills == 2) selected="true" @endif>Fair</option>
-                                     <option value="3" @if($profile->it_skills == 3) selected="true" @endif>Good</option>
-                                     <option value="4" @if($profile->it_skills == 4) selected="true" @endif>Excellent</option>
-                                </select> 
-                            </div>
-                        </div>
+<div class="form-group">
+        <label class="col-md-4 control-label" for="it_skills">IT Skills</label>
+        <div class="col-md-6">
+            <select id="it_skills" name="it_skills" class="form-control" data-placeholder="Choose a Category.." required="true">
+                <option disabled="true">Select IT Skills</option>
+                    <option value="1" @if($profile->it_skills == 1) selected="true" @endif>Poor</option>
+                    <option value="2" @if($profile->it_skills == 2) selected="true" @endif>Fair</option>
+                    <option value="3" @if($profile->it_skills == 3) selected="true" @endif>Good</option>
+                    <option value="4" @if($profile->it_skills == 4) selected="true" @endif>Excellent</option>
+            </select> 
+        </div>
+    </div>
 
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="example-Linked">Linked In Profile</label>
-                            <div class="col-md-6">
-                                 <input type="text" id="linked"  value="{{$profile->linked}}" name="linked" class="form-control ui-wizard-content" placeholder="Your linked profile."  >
-                            </div>
-                        </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="example-Linked">Linked In Profile</label>
+        <div class="col-md-6">
+                <input type="text" id="linked"  value="{{$profile->linked or old('linked')}}" name="linked" class="form-control ui-wizard-content" placeholder="Your linked profile."  >
+        </div>
+    </div>
 
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="example-twitter">Twitter Profile</label>
-                            <div class="col-md-6">
-                                 <input type="text" id="twitter"  value="{{$profile->twitter}}" name="twitter" class="form-control ui-wizard-content" placeholder="Your twitter profile." >
-                            </div>
-                        </div>
-                     
-                 
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="example-facebook">Fcebook Profile</label>
-                            <div class="col-md-6">
-                                 <input type="text" id="facebook"  value="{{$profile->facebook}}" name="facebook" class="form-control ui-wizard-content" placeholder="Your facebook profile."  >
-                            </div>
-                        </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="example-twitter">Twitter Profile</label>
+        <div class="col-md-6">
+                <input type="text" id="twitter"  value="{{$profile->twitter or old('twitter')}}" name="twitter" class="form-control ui-wizard-content" placeholder="Your twitter profile." >
+        </div>
+    </div>
+    
+
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="example-facebook">Fcebook Profile</label>
+        <div class="col-md-6">
+                <input type="text" id="facebook"  value="{{$profile->facebook or old('facebook')}}" name="facebook" class="form-control ui-wizard-content" placeholder="Your facebook profile."  >
+        </div>
+    </div>
                     
                 <!-- step four -->
       
@@ -260,126 +260,134 @@
           <div class="form-group">
              <label class="col-md-4 control-label" for="example-facebook">Country</label>
              <div class="col-md-6">
-                  <input type="text" id="country"  value="{{$profile->country}}" name="country" class="form-control ui-wizard-content" placeholder="Afghanistan">
+                  <input type="text" id="country"  value="{{$profile->country or old('country')}}" name="country" class="form-control ui-wizard-content" placeholder="Afghanistan">
              </div>
          </div> 
 
          
-               <div class="form-group">
-                   <label class="col-md-4 control-label" for="example-facebook">Zone</label>
-                   <div class="col-md-6">
-                      <select name="zone" class="form-control">                 
-                        <option @if($profile->zone == 'North') selected @endif  value="North">North</option>
-                        <option @if($profile->zone == 'Northeast') selected @endif  value="Northeast">Northeast</option>
-                        <option @if($profile->zone == 'East') selected @endif  value="East">East</option>
-                        <option @if($profile->zone == 'Southeast') selected @endif  value="Southeast">Southeast</option>
-                        <option @if($profile->zone == 'Central') selected @endif  value="Central">Central</option>
-                        </select>
-                     </div>
-                 </div> 
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="example-facebook">Region</label>
+            <div class="col-md-6">
+                <select name="region_id" class="form-control">  
+            @foreach($Shared_regions as $region)               
+                <option @if($profile->region_id == $region->id) selected @endif  value="{{$region->id}}">{{$region->name}}</option>
+            @endforeach
+                </select>
+                </div>
+            </div> 
 
-                  <div class="form-group">
-                     <label class="col-md-4 control-label" for="example-facebook">Province</label>
-                     <div class="col-md-6">
-                          <input type="text" id="province"  value="{{$profile->province}}" name="province" class="form-control ui-wizard-content" placeholder="Kabul">
-                     </div>
-                 </div> 
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="example-facebook">Province</label>
+            <div class="col-md-6">
+                <select name="province_id" class="form-control">  
+            @foreach($Shared_provinces as $province)               
+                <option @if($profile->province_id == $province->id) selected @endif  value="{{$province->id}}">{{$province->name}}</option>
+            @endforeach
+                </select>
+                </div>
+            </div> 
 
-                  <div class="form-group">
-                     <label class="col-md-4 control-label" for="example-facebook">Position</label>
-                     <div class="col-md-6">
-                          <input type="text" id="position"  value="{{$profile->position}}" name="position" class="form-control ui-wizard-content" placeholder="MEAL Manager">
-                     </div>
-                 </div> 
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="example-facebook">Position</label>
+            <div class="col-md-6">
+                <select name="currency_id" class="form-control">  
+            @foreach($Shared_currencies as $currency)               
+                <option @if($profile->currency_id == $currency->id) selected @endif  value="{{$currency->id}}">{{$currency->name}}</option>
+            @endforeach
+                </select>
+                </div>
+            </div> 
 
-                 <div class="form-group">
-                     <label class="col-md-4 control-label" for="dob"> Join Date</label>
-                     <div class="col-md-6">
-                        <input type="text" id="join_date" name="join_date" class="form-control input-datepicker" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd" value="{{$profile->join_date}}"> 
-                     </div>
-                 </div>  
-
-             <div class="form-group">
-                     <label class="col-md-4 control-label" for="dob"> Expiry Date</label>
-                     <div class="col-md-6">
-                        <input type="text" id="expiry_date" name="expiry_date" class="form-control input-datepicker" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd" value="{{$profile->expiry_date}}"> 
-                     </div>
-                 </div>
-
-                  <div class="hr-section">
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="example-facebook">Bank Account Number</label>
-                            <div class="col-md-6">
-                                 <input type="text" id="bank_account_number"  value="{{$profile->bank_account_number}}" name="bank_account_number" class="form-control ui-wizard-content" placeholder="006901100745209"  >
-                            </div>
-                        </div>  
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="example-facebook">Bank Account Card</label>
-                            <div class="col-md-6">
-                                 <input type="file" id="scan_bank_account_card"  value="{{$profile->scan_bank_account_card}}" name="scan_bank_account_card" class="form-control ui-wizard-content"    >
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="example-facebook">Salary Amount</label>
-                            <div class="col-md-6">
-                                 <input type="Number" id="salary"  value="{{$profile->salary}}" name="salary" class="form-control ui-wizard-content" placeholder="80000"  >
-                            </div>
-                        </div> 
-
-                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="example-facebook">Currency</label>
-                            <div class="col-md-6">
-                                 <input type="text" id="currency"  value="{{$profile->currency}}" name="currency" class="form-control ui-wizard-content" placeholder="AFN"  >
-                            </div>
-                        </div> 
-
-                      </div>
-                   @endif
-
-                   @if(Auth::user()->profile->role==4)
-                      <div class="divider">Admin Section</div>
-                        <div class="form-group role-section">
-                               <label class="col-md-4 control-label" for="example-facebook">Role</label>
-                               <div class="col-md-6">
-                                     <select id="role" name="role" class="form-control" data-placeholder="Assign Role.." required="true">
-                                       <option disabled="true">Select IT Skills</option>
-                                          <option value="1" @if($profile->role == 0) selected="true" @endif>Guest</option>
-                                          <option value="2" @if($profile->role == 1) selected="true" @endif>Reporter</option>
-                                          <option value="3" @if($profile->role == 2) selected="true" @endif>HR</option>
-                                          <option value="4" @if($profile->role == 3) selected="true" @endif>Field Monitoring Engineer </option>
-                                          <option value="3" @if($profile->role == 4) selected="true" @endif>Senior</option>
-                                     </select> 
-                               </div>
-                           </div>
-
-                    @endif
  
-                                             <!-- Form Buttons -->
-                                             <div class="form-group form-actions">
 
-                                                 <div class="col-md-8 col-md-offset-4">
-                                            
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="dob"> Join Date</label>
+        <div class="col-md-6">
+        <input type="text" id="join_date" name="join_date" class="form-control input-datepicker" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd" value="{{$profile->join_date}}"> 
+        </div>
+    </div>  
 
-                                                     <input type="submit" class="btn btn-sm btn-primary ui-wizard-content ui-formwizard-button" id="next" value="Save Changes">
+<div class="form-group">
+        <label class="col-md-4 control-label" for="dob"> Expiry Date</label>
+        <div class="col-md-6">
+        <input type="text" id="expiry_date" name="expiry_date" class="form-control input-datepicker" data-date-format="yyyy-mm-dd" placeholder="yyyy-mm-dd" value="{{$profile->expiry_date}}"> 
+        </div>
+    </div>
 
-                                                     <a href="{{route('user.OpenExperience', $profile->id)}}" class="btn btn-sm btn-primary ui-wizard-content ui-formwizard-button" > Add Experience</a>
-                                                     <a href="#" lass="btn btn-sm btn-primary ui-wizard-content ui-formwizard-button"> Add Education</a>
-                                                 </div>
-                                             </div>
-                                             <!-- END Form Buttons -->
+    <div class="hr-section">
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="example-facebook">Bank Account Numbers, separat by comma in case of multiple numbers<br> <small>Info:&nbsp;Upload the scan copy of bank account card under documents tab</small></label>
+            <div class="col-md-6">
+                    <input type="text" id="bank_account_number"  value="{{$profile->bank_account_number}}" name="bank_account_number" class="form-control ui-wizard-content" placeholder="006901100745209"  >
+            </div>
+        </div>  
 
-                                      
-                                     </form>
-                            
-                                 
-                                     <!-- END Basic Wizard Content -->
-                                 </div>
+ 
+        
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="example-facebook">Salary Amount</label>
+            <div class="col-md-6">
+                    <input type="Number" id="salary"  value="{{$profile->salary}}" name="salary" class="form-control ui-wizard-content" placeholder="80000"  >
+            </div>
+        </div> 
+
+     <div class="form-group">
+            <label class="col-md-4 control-label" for="example-facebook">Currency</label>
+            <div class="col-md-6">
+                <select name="position_id" class="form-control">  
+            @foreach($Shared_positions as $position)               
+                <option @if($profile->position_id == $position->id) selected @endif  value="{{$position->id}}">{{$position->name}}</option>
+            @endforeach
+                </select>
+                </div>
+            </div>  
+
+        </div>
+    @endif
+
+@if(Auth::user()->profile->role==4)
+<div class="divider">Admin Section</div>
+<div class="form-group role-section">
+    <label class="col-md-4 control-label" for="example-facebook">Role</label>
+    <div class="col-md-6">
+            <select id="role" name="role" class="form-control" data-placeholder="Assign Role.." required="true">
+            <option disabled="true">Select role</option>
+                <option value="1" @if($profile->role == 0) selected="true" @endif>Guest</option>
+                <option value="2" @if($profile->role == 1) selected="true" @endif>Reporter</option>
+                <option value="3" @if($profile->role == 2) selected="true" @endif>HR/Admin</option>
+                <option value="4" @if($profile->role == 3) selected="true" @endif>Senior/Management member </option>
+                <option value="3" @if($profile->role == 4) selected="true" @endif>Developer</option>
+            </select> 
+    </div>
+</div>
+
+@endif
+ 
+    <!-- Form Buttons -->
+    <div class="form-group form-actions">
+
+        <div class="col-md-8 col-md-offset-4">
 
 
-  
-         @endsection
+            <input type="submit" class="btn btn-sm btn-primary ui-wizard-content ui-formwizard-button" id="next" value="Save Changes">
+
+            <a href="{{route('user.OpenExperience', $profile->user_id)}}" class="btn btn-sm btn-primary ui-wizard-content ui-formwizard-button" > Add Experience</a>
+        <a href="{{route('education.create', $profile->user_id)}}" class="btn btn-sm btn-primary ui-wizard-content ui-formwizard-button"> Add Education</a>
+            <a href="{{route('documents.create', $profile->user_id)}}" class="btn btn-sm btn-primary ui-wizard-content ui-formwizard-button"> Upload Documents</a>
+        </div>
+    </div>
+    <!-- END Form Buttons -->
+
+
+</form>
+
+
+<!-- END Basic Wizard Content -->
+</div>
+
+
+
+@endsection
 
          <style type="text/css">
            .hr-section {

@@ -268,7 +268,7 @@
                                       <a href="{{route('project.index')}}">List & controls</a>
                                   </li>
                                   <li>
-                                      <a href="{{route('project.create')}}">Add new Position</a>
+                                      <a href="{{route('project.create')}}">Add new Project</a>
                                   </li>
                                 
                                   

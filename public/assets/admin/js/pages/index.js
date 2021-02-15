@@ -16,7 +16,7 @@ var Index = function() {
                 height: '64px',
                 tooltipOffsetX: -25,
                 tooltipOffsetY: 20,
-                barColor: '#999999',
+                barColor: '#1BBAE1',
                 tooltipPrefix: '+ ',
                 tooltipSuffix: ' Sales',
                 tooltipFormat: '{{prefix}}{{value}}{{suffix}}'

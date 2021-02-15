@@ -89,19 +89,18 @@ class UserController extends Controller
             $profile->facebook = $request->facebook;
             $profile->twitter = $request->twitter;
             $profile->linked = $request->linked;
- 
-    
 
-              $profile->department_id = $request->department_id;
-              $profile->country = $request->country;
-              $profile->region_id = $request->region_id;
-              $profile->province_id = $request->province_id;
-              $profile->position_id = $request->position_id;
-              $profile->join_date = $request->join_date;
-              $profile->expiry_date = $request->expiry_date;
+            $profile->department_id = $request->department_id;
+            $profile->country = $request->country;
+            $profile->region_id = $request->region_id;
+            $profile->province_id = $request->province_id;
+            $profile->position_id = $request->position_id;
+            $profile->join_date = $request->join_date;
+            $profile->expiry_date = $request->expiry_date;
+            $profile->salary = $request->salary;
+            //$profile->percentage_charged = $request->percentage_charged;
+            $profile->bank_account_number = $request->bank_account_number;
           
-
-
 
           if($request->role !== null) {
               $profile->role = $request->role;
@@ -125,8 +124,12 @@ class UserController extends Controller
   public function profile($id)
   {
     $user = User::where('id', $id)->first();
+    $profile = Profile::with('position')
+    ->with('region')
+    ->with('province')
+    ->first();
 
-    return view('hr.users.complete_profile_st7', compact('user'));
+    return view('hr.users.complete_profile_st7', compact('user', 'profile'));
   }
 
 

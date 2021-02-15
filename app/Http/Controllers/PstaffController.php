@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Contract;
+use App\Pstaff;
 use Illuminate\Http\Request;
 
-class ContractController extends Controller
+class PstaffController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ContractController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -41,10 +41,10 @@ class ContractController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Contract  $contract
+     * @param  \App\Pstaff  $pstaff
      * @return \Illuminate\Http\Response
      */
-    public function show(Contract $contract)
+    public function show(Pstaff $pstaff)
     {
         //
     }
@@ -52,10 +52,10 @@ class ContractController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Contract  $contract
+     * @param  \App\Pstaff  $pstaff
      * @return \Illuminate\Http\Response
      */
-    public function edit(Contract $contract)
+    public function edit(Pstaff $pstaff)
     {
         //
     }
@@ -64,10 +64,10 @@ class ContractController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Contract  $contract
+     * @param  \App\Pstaff  $pstaff
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contract $contract)
+    public function update(Request $request, Pstaff $pstaff)
     {
         //
     }
@@ -75,10 +75,10 @@ class ContractController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Contract  $contract
+     * @param  \App\Pstaff  $pstaff
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contract $contract)
+    public function destroy(Pstaff $pstaff)
     {
         //
     }

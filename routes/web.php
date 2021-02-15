@@ -62,3 +62,7 @@ route::get('/hr/user/sort/{a}', 'UserController@sort')->name('user.sort');
  Route::resource('/donor', 'DonorController');
  Route::resource('/project', 'ProjectController');
  Route::resource('/currency', 'CurrencyController');
+ 
+ Route::resource('/pstaff', 'PstaffController');
+ route::get('/pstaff/index/{id}', 'PstaffController@index1')->name('pstaff.index1');
+

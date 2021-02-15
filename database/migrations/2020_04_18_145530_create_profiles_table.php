@@ -63,6 +63,9 @@ class CreateProfilesTable extends Migration
             $table->integer('region_id')->nullable();
             $table->integer('province_id')->nullable();
             $table->integer('position_id')->nullable();
+            $table->string('bank_account_number')->nullable();
+            $table->number('salary')->nullable();
+            $table->number('percentage_charged')->nullable();
             $table->string('join_date')->nullable();
             $table->string('expiry_date')->nullable();
           

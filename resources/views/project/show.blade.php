@@ -6,7 +6,7 @@
 <div class="block">
     <!-- Responsive Full Title -->
     <div class="block-title">
-        <h2><strong>{{$project->name}}</strong> Detials</h2>
+        <h2><strong>{{$project->name}}</strong> Detials &nbsp; &nbsp; <a href="#" class="btn btn-sm btn-primary outline"> Staff List - D&S <span class="badge badge-success"> {!! $project->D_staff + $project->S_staff !!} </span></a></h2>
     </div>
     <!-- END Responsive Full Title -->
 
@@ -18,8 +18,8 @@
                 <tr><td>Project focal point</td><td> {{$project->user->name}}</td></tr>
                 <tr><td>Project code</td><td>{{$project->code}}</td></tr>
                 <tr><td>Project direct_benefeciaries</td><td>{{$project->direct_benefeciaries}}</td></tr>
-                <tr><td>Project D_staff</td><td>{{$project->D_staff}}</td></tr>
-                <tr><td>Project S_staff</td><td>{{$project->S_staff}}</td></tr>
+                <tr><td>Project D_staff</td><td>{{$project->D_staff}}   </td></tr>
+                <tr><td>Project S_staff</td><td>{{$project->S_staff}} </td></tr>
                 <tr><td>Project start_date</td><td>{{$project->start_date}}</td></tr>
                 <tr><td>Project completion_date</td><td>{{$project->completion_date}}</td></tr>
                 <tr><td>Project Donor</td><td>{{$project->donor->name}}</td></tr>

@@ -82,14 +82,14 @@
              <div class="form-group">
                       <label class="col-md-4 control-label" for="T_Budget"> Total Project Budget &nbsp; <span id="reqired_field">*</span></label>
                       <div class="col-md-6">
-                      <input type="number" name="Total_budget" class="form-control" placeholder="Support staff of the project" value="{{ old('Total_budget') }}">
+                      <input type="number" name="Total_budget" class="form-control" placeholder="Project Budget" value="{{ old('Total_budget') }}">
                   </div> 
               </div>
             
              <div class="form-group">
                       <label class="col-md-4 control-label" for="T_Budget"> Total Salaries &nbsp; <span id="reqired_field">*</span></label>
                       <div class="col-md-6">
-                      <input type="number" name="Total_salaries" class="form-control" placeholder="Support staff of the project" value="{{ old('Total_salaries') }}">
+                      <input type="number" name="Total_salaries" class="form-control" placeholder="Total salaries amount" value="{{ old('Total_salaries') }}">
                   </div> 
               </div>             
 

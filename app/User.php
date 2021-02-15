@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Position;
 
 class User extends Authenticatable
 {
@@ -65,23 +66,12 @@ class User extends Authenticatable
         return $this->hasMany('App\Project');
     }
 
-    
-    
-    public function position()
-    {
-        return $this->hasOne('App\Position');
-    }
-   
-   
-   
+ 
     public function documents()
 {
     return $this->hasMany('App\Document');
 }
    
-    public function contract()
-    {
-        return $this->hasMany('App\Contract');
-    }
+ 
     
 }

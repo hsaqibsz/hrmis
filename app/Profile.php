@@ -10,4 +10,18 @@ class Profile extends Model
 
       return $this->belongsTo('App\User');
     }
+
+       
+    public function position()
+    {
+        return $this->belongsTo('App\Position');
+    }
+    public function region()
+    {
+        return $this->belongsTo('App\Region');
+    }
+    public function province()
+    {
+        return $this->belongsTo('App\Province');
+    }
 }
