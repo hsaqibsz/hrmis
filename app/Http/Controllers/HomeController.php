@@ -44,8 +44,8 @@ class HomeController extends Controller
 
         elseif ($request->search_table == 'projects') {
 
-        $projects = Project::where('project_name', 'LIKE', '%'. $request->keywords.'%')
-        ->orwhere('project_id', 'LIKE', '%'. $request->project_id .'%')->paginate(5);
+        $projects = Project::where('name', 'LIKE', '%'. $request->keywords.'%')
+        ->orwhere('code', 'LIKE', '%'. $request->project_id .'%')->paginate(5);
         $project_count = $projects->count();
 
         if($project_count>0){

@@ -60,19 +60,22 @@ class UserController extends Controller
       /*Section 3 uploads*/
 
          /*avatar*/
-              $file_avatar_name = null;
-              $avatar_path = null;
-              if ($request->avatar !== null) {
-                  $file_avatar = $request->file('avatar');
-                  $file_avatar_name = uniqid().$file_avatar->getClientOriginalName();
-                  $path = base_path("uploads/hr/avatar/".date('Y')."/".date('M'));
-                  $file_avatar->move($path, $file_avatar_name);
-           
-              } 
+         $file_avatar_name = null;
+        $avatar_path = null;
+        if ($request->avatar !== null) {
+            $file_avatar = $request->file('avatar');
+            $file_avatar_name = uniqid().$file_avatar->getClientOriginalName();
+            $path = base_path("public/uploads/hr/avatar/".date('Y')."/".date('M'));
+            $file_avatar->move($path, $file_avatar_name);
+     
+        }
        
-       
-              $profile->NIC_number = $request->NIC_number;
-              $profile->passport_number = $request->passport_number;
+          if($request->avatar !== null){
+        $profile->avatar =  "/uploads/hr/avatar/".date('Y')."/".date('M')."/".$file_avatar_name;
+          
+          } 
+              $profile->NIC_No = $request->NIC_No;
+              $profile->passport_No = $request->passport_No;
 
             /*section 4 Address*/
 
@@ -124,7 +127,8 @@ class UserController extends Controller
   public function profile($id)
   {
     $user = User::where('id', $id)->first();
-    $profile = Profile::with('position')
+    $profile = Profile::where('user_id', $id) 
+    ->with('position')
     ->with('region')
     ->with('province')
     ->first();

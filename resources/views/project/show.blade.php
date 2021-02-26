@@ -6,7 +6,7 @@
 <div class="block">
     <!-- Responsive Full Title -->
     <div class="block-title">
-        <h2><strong>{{$project->name}}</strong> Detials &nbsp; &nbsp; <a href="#" class="btn btn-sm btn-primary outline"> Staff List - D&S <span class="badge badge-success"> {!! $project->D_staff + $project->S_staff !!} </span></a></h2>
+    <h2><strong>{{$project->name}}</strong> Detials &nbsp; &nbsp; <a href="{{route('pstaff.show', $project->id)}}" target="_blank" class="btn btn-sm btn-primary outline"> Staff List - D&S <span class="badge badge-success"> {!! $project->D_staff + $project->S_staff !!} </span></a></h2>
     </div>
     <!-- END Responsive Full Title -->
 

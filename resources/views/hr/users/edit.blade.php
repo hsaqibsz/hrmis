@@ -96,14 +96,14 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="example-firstname">NIC No</label>
                       <div class="col-md-6">
-                          <input type="Number" id="NIC_number" name="NIC_number" value="{{$profile->NIC_number}}" class="form-control ui-wizard-content">
+                          <input type="Number" id="NIC_No" name="NIC_No" value="{{$profile->NIC_No}}" class="form-control ui-wizard-content">
                       </div>
                   </div>   
 
                    <div class="form-group">
                       <label class="col-md-4 control-label" for="example-firstname">Passport No</label>
                       <div class="col-md-6">
-                          <input type="text" id="passport_number" name="passport_number" value="{{$profile->passport_number}}" class="form-control ui-wizard-content">
+                          <input type="text" id="passport_No" name="passport_No" value="{{$profile->passport_No}}" class="form-control ui-wizard-content">
                       </div>
                   </div>
 

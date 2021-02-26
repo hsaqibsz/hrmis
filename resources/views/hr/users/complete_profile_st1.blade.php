@@ -59,8 +59,8 @@
             <div class="form-group">
                     <label class="col-md-4 control-label"> Marital Status</label>
                     <div class="col-md-6">
-                    Single:    <input type="radio" name="marital_status" value="0" @if($profile->marital_status == 0) checked @endif> &nbsp; &nbsp; 
-                    married:    <input type="radio" name="marital_status" value="1" @if($profile->marital_status == 1) checked @endif> &nbsp; &nbsp; 
+                   <label> Single:    <input type="radio" name="marital_status" value="0" @if($profile->marital_status == 0) checked @endif></label> &nbsp; &nbsp; 
+                   <lable> married:    <input type="radio" name="marital_status" value="1" @if($profile->marital_status == 1) checked @endif> </label> &nbsp; &nbsp; 
                     </div>
                 </div>
 
@@ -89,8 +89,8 @@
 <div class="form-group">
     <label class="col-md-4 control-label"> Gender</label>
     <div class="col-md-6">
-    Female:    <input type="radio" name="gender" value="0" @if($profile->gender == 0) checked @endif> &nbsp; &nbsp; 
-    Male:    <input type="radio" name="gender" value="1" @if($profile->gender == 1) checked @endif> &nbsp; &nbsp; 
+   <label> Female:    <input type="radio" name="gender" value="0" @if($profile->gender == 0) checked @endif></label> &nbsp; &nbsp; 
+   <label> Male:    <input type="radio" name="gender" value="1" @if($profile->gender == 1) checked @endif></label> &nbsp; &nbsp; 
     </div>
 </div>
 

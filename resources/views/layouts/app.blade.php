@@ -132,7 +132,10 @@
                                            </li>
 
                                            <li>
-                                               <a href="{{route('hr.employees')}}">Employees</a>
+                                               <a href="{{route('hr.employees')}}">Employees List</a>
+                                           </li>
+                                           <li>
+                                               <a href="{{route('user.register.new')}}">Register New Employee</a>
                                            </li>
                                            <li>
                                                <a href="#">Payrols</a>
@@ -565,8 +568,8 @@
                        
 
                          <div class="pull-left">
-                            <span > 2010 - <?PHP echo date('Y'); ?></span> &copy; <a href="http://ord.org.af" target="_blank">Organization for Relief Development (ORD)</a>
-                           &nbsp; &nbsp; <span > Powered by</span> <a href="https://www.linkedin.com/in/hikmatullah-saqib-a53230122" target="_blank">SAQIB</a>
+                            <span style=" margin-left:10px;">2010 - <?PHP echo date('Y'); ?> &copy;</span> <a href="http://ord.org.af" target="_blank">Organization for Relief Development (ORD)</a>
+                           &nbsp; &nbsp; <span style=""> Powered by</span> <a href="https://www.linkedin.com/in/hikmatullah-saqib-a53230122" target="_blank">SAQIB</a>
                         </div>
                     </footer>
                     <!-- END Footer -->

@@ -1,106 +1,73 @@
 @extends('layouts.app')
 
 @section('page-content')
-<a href="{{route('pstaff.create')}}" data-animation="animation-stretchLeft">Add new user</a>
- <div id="page-content" style="min-height: 1631px;">
+ 
 
-<div class="content-header">
-<ul class="nav-horizontal text-center">
-    <li class="active">
-        <a href="javascript:void(0)"><i class="fa fa-home"></i> Home</a>
-    </li>
-    <li>
-        <a href="javascript:void(0)"><i class="gi gi-charts"></i> Kabul Office Staff</a>
-    </li>
-    <li>
-        <a href="javascript:void(0)"><i class="gi gi-briefcase"></i> Regions</a>
-    </li>
-    <li>
-        <a href="javascript:void(0)"><i class="gi gi-briefcase"></i> Project Based</a>
-    </li>
-    <li>
-        <a href="javascript:void(0)"><i class="fa fa-male"></i> Male Staff</a>
-    </li>
-    <li>
-        <a href="javascript:void(0)"><i class="fa fa-female"></i> Femal Staff</a>
-    </li>
+<div class="block">
+    <!-- Responsive Full Title -->
+    <div class="block-title">
+    <h2><strong>{{$project->name}}</strong> Staff List  <small><span class="badge badge-info">{{$pstaff->count()}} out of {!! $project->D_staff + $project->S_staff !!} Registered</span></small> </h2> 
+     @if($pstaff->count() <   $project->D_staff + $project->S_staff)
+        <a href="{{route('pstaff.create', $project->id)}}" class="btn btn-alt btn-default pull-right" style="margin-right:10px;"><i class="fa fa-user-plus " style="font-size:18px;"></i></a> &nbsp; &nbsp; 
+     @else
+    <button class="btn btn-alt btn-default pull-right" style="margin-right:10px;" title="No more staff members can be charged in this project" disabled><i class="fa fa-user-plus " style="font-size:18px;"></i></button> &nbsp; &nbsp; 
+     @endif
+        <a href="#" class="btn btn-alt btn-default pull-right" data-toggle="tooltip" title="Download PDF" data-original-title="fa fa-cloud-download " style="display: inline-block;"><i class="fa fa-cloud-download fa-fw"></i></a>
+    </div>
+    <!-- END Responsive Full Title -->
+ 
+    <!-- Responsive Full Content -->
+       <div class="table-responsive">
+        <table class="table table-vcenter table-striped">
+            <thead>
+                <tr>
+                     <th>No</th>
+                    <th>Full Name</th>
+                    <th>F/Name</th>
+                    <th>Title </th>
+                    <th>Location <br> <small>(Region/Province)</small></th>
+                    <th>Donor/Project</th>
+                    <th>Type <br><small>(D = Direct, S= Support)</small></th>
+                    <th>Gross Salary </th>
+                    <th>Duration <br><small>(Start - Completion)</small></th>
+                    <th>Status <br><small>(Active/Expired)</small></th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
 
-    <li>
-        <a href="javascript:void(0)"><i class="fa fa-cogs"></i> Settings</a>
-    </li>
-</ul>
+              @foreach($pstaff as $pstaff)
+                <tr>
+                  
+                    <td> {{$loop->index+1 }}</td>
+                    <td>{{$pstaff->user->name}} &nbsp; {{$pstaff->user->lastname}}</td>
+                    <td>{{$pstaff->user->profile->fater_name}}</td>
+                    <td>{{$pstaff->title_this_project}}</td>
+                    <td>{{$pstaff->region->name}}/ {{$pstaff->province->name}}</td>
+                    <td>{{$pstaff->donor->name}}/ {{$pstaff->project->name}}</td>
+                    <td>@if($pstaff->DorS == 1) D @else  S @endif </td>
+                    <td>{{$pstaff->salary}} &nbsp; {{$pstaff->currency->name}}</td>
+                    <td>{{$pstaff->start_date}} &nbsp; {{$pstaff->completion_date}}</td>
+                    <td>Active</td>
+                   
+                    <td class="text-center" colspan="2" >
+                        <div class="btn-group btn-group-xs">
+                            <a href="{{route('pstaff.edit', $pstaff->user_id)}}" data-toggle="tooltip" title="Edit" class="btn btn-default "><i class="fa fa-pencil"></i></a>
+                            <a href="/"  data-toggle="tooltip" title="Download Employment Contract" class="btn btn-success" target="popup" onclick="window.open('{{asset("$pstaff->scan_contract")}}', 'Download Contract', 'with=400, min-heigh:400')"><i class="fa fa-cloud-download fa-fw"></i></a>
+ 
+                        </div>
+                    </td>
+                </tr>
+              @endforeach
+
+              
+            </tbody>
+        </table>
+    </div>
+  
+    <!-- END Responsive Full Content -->
 </div>
 
-  
-@if($employees->count()>0)
-
-<div class="alert alert-success alert-dismissable">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-    <h4><i class="fa fa-check-circle"></i> Success</h4> <span>{{ $employees->count()}} &nbsp; employees vailable</span>
-            </div>
-
-    @endif
+@endsection
 
  
-   <div class="block full">
-                               <div class="block-title">
-                                   <h2><strong>Datatables of</strong> Employees</h2>
-                             
-                               </div>
-
-                               <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nihil eos, enim sequi ut maiores tenetur possimus libero facilis ducimus atque deleniti eaque ex culpa mollitia quia, quasi reprehenderit aut </p>
-                               <div class="table-responsive">
-                                   <div id="example-datatable_wrapper" class="dataTables_wrapper form-inline no-footer"><div class="row"><div class="col-sm-6 col-xs-5"><div class="dataTables_length" id="example-datatable_length"><label><select name="example-datatable_length" aria-controls="example-datatable" class="form-control"><option value="10">10</option><option value="20">20</option><option value="30">30</option><option value="-1">All</option></select></label></div></div><div class="col-sm-6 col-xs-7"><div id="example-datatable_filter" class="dataTables_filter"><label><div class="input-group"><input type="search" class="form-control" placeholder="Search" aria-controls="example-datatable"><span class="input-group-addon"><i class="fa fa-search"></i></span></div></label></div></div></div><table id="example-datatable" class="table table-vcenter table-condensed table-bordered dataTable no-footer" role="grid" aria-describedby="example-datatable_info">
-                                       <thead>
-                                           <tr role="row">
-
-                                            <th class="text-center sorting_asc" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending" style="width: 58px;">ID</th>
-
-                                            <th class="text-center sorting_disabled" rowspan="1" colspan="1" aria-label="" style="width: 89px;"><i class="gi gi-user"></i></th>
-
-                                            <th class="sorting" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 112px;">Name</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 112px;">Father Name</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1" aria-label="Valid Thru: activate to sort column ascending" style="width: 211px;"> Valid Thru</th> {{-- management colleagues love to see the important dates prior other information --}}
-
-                                            <th class="sorting" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 224px;">Title</th>
-
-                                            <th class="sorting" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1" aria-label="Location: activate to sort column ascending" style="width: 211px;">Location</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1" aria-label="Location: activate to sort column ascending" style="width: 211px;">D or S</th>
-                                          <th class="text-center sorting_disabled" rowspan="1" colspan="1" aria-label="Actions" style="width: 136px;">Actions</th></tr>
-
-                                             
-
-
-                                       </thead>
-                                       <tbody>
-                                            
-                                  
-           @foreach($pstaff as $emp)   
-                     <tr role="row" class="odd">
-                    <td class="text-center sorting_1">{{$loop->index + 1}}</td>
-
-                             <td class="text-center"><img src="{{asset($emp->profile->avatar)}}" alt="avatar" class="img-circle" width="40" height="40"></td>
-
-                             <td> {{$emp->name}}</td>
-                             <td>{{$emp->profile->position->name}}</td>
-                             <td><span class="label label-info">Central/Kabul</span></td>
-                             <td><span class="label label-warning">2020-03-30</span></td>
-                             <td class="text-center">
-                                 <div class="btn-group">
-                                     <a href="javascript:void(0)" data-toggle="tooltip" title="" class="btn btn-xs btn-default" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
-                                     <a href="javascript:void(0)" data-toggle="tooltip" title="" class="btn btn-xs btn-danger" data-original-title="Delete"><i class="fa fa-times"></i></a>
-                                     <a href="{{route('user.profile', $emp->id)}}" data-toggle="tooltip" title="" class="btn btn-xs btn-info" data-original-title="Show"><i class="fa fa-th-large"></i></a>
-                                 </div>
-                             </td>
-                         </tr> 
-           @endforeach
-           
-            </tbody>
-                 </table><div class="row"><div class="col-sm-5 hidden-xs"><div class="dataTables_info" id="example-datatable_info" role="status" aria-live="polite"><strong>1</strong>-<strong>10</strong> of <strong>{{$employees->count()}}</strong></div></div><div class="col-sm-7 col-xs-12 clearfix"><div class="dataTables_paginate paging_bootstrap" id="example-datatable_paginate">
-                    
-                  {{ $employees->links() }}
-                  </div></div></div></div>
-             </div>
-         </div>
- </div>
-@endsection

@@ -1,33 +1,35 @@
 @extends('layouts.app')
- 
 
 @section('page-content')
+
+  <div id="page-content" style="min-height: 1631px;">
  
-<div id="page-content">
+{{-- <div id="page-content"> --}}
 
 <div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-12">
-                                <!-- Widget -->
-                                <a href="page_widgets_stats.html" class="widget widget-hover-effect1">
-                                    <div class="widget-simple">
-                                        <div class="widget-icon pull-left themed-background animation-fadeIn">
-                                            <img src="{{$user->profile->avatar}}" class="pull-right img-circle" width="70px" height="70"  >
-                                        </div>
-                                        <div class="pull-right">
-                                            <!-- Jquery Sparkline (initialized in js/pages/index.js), for more examples you can check out http://omnipotent.net/jquery.sparkline/#s-about -->
-                                            <span id="mini-chart-brand"><canvas width="176" height="64" style="display: inline-block; width: 176px; height: 64px; vertical-align: top;"></canvas></span>
-                                        </div>
-                                        <h3 class="widget-content animation-pullDown visible-lg">
-                                        <h3 class="bold">{{$user->name}} &nbsp; {{$user->lastname}}</h3><br>
-                                           @if($profile->position_id !==null) <span class="headline">{{$profile->position->name}}</span> @endif
-                                           @if($profile->region_id !==null) <span class="headline">&nbsp; <i class="fa fa-map-marker" aria-hidden="true"></i> {{$profile->region->name}}/</span> @endif
-                                           @if($profile->province_id !==null) <span class="headline">{{$profile->province->name}}</span> @endif
-                                          
-                                        </h3>
-                                    </div>
-                                </a>
-                                <!-- END Widget -->
-                            </div>
+<div class="col-sm-12 col-md-12 col-lg-12">
+                <!-- Widget -->
+                <a href="page_widgets_stats.html" class="widget widget-hover-effect1">
+                    <div class="widget-simple">
+                        <div class="widget-icon pull-left themed-background animation-fadeIn">
+                            <img src="{{$user->profile->avatar}}" class="pull-right img-circle" width="70px" height="70"  >
+                        </div>
+                        <div class="pull-right">
+                            <!-- Jquery Sparkline (initialized in js/pages/index.js), for more examples you can check out http://omnipotent.net/jquery.sparkline/#s-about -->
+                            <span id="mini-chart-brand"><canvas width="176" height="64" style="display: inline-block; width: 176px; height: 64px; vertical-align: top;"></canvas></span>
+                        </div>
+                        <h3 class="widget-content animation-pullDown visible-lg">
+                        <h3 class="bold">{{$user->name}} &nbsp; {{$user->lastname}}</h3><br>
+                            @if($profile->position_id !==null) <span class="headline">{{$profile->position->name}}</span> @endif
+                            @if($profile->region_id !==null) <span class="headline">&nbsp; <i class="fa 
+                            fa-map-marker" aria-hidden="true"></i> {{$profile->region->name}}/</span> @endif
+                            @if($profile->province_id !==null) <span class="headline">{{$profile->province->name}}</span> @endif
+                            
+                        </h3>
+                    </div>
+                </a>
+                <!-- END Widget -->
+            </div>
 
      
 
@@ -36,7 +38,7 @@
 
                             <div class="col-sm-6 col-lg-3">
                                 <!-- Widget -->
-                                <a href="{{route('user.register.new')}}" class="widget widget-hover-effect1">
+                                <a href="{{route('user.edit.profile', $user->id)}}" class="widget widget-hover-effect1">
                                     <div class="widget-simple">
                                         <div class="widget-icon pull-left themed-background-autumn animation-fadeIn">
                                             <i class="fa fa-edit header-icon"  ></i>
@@ -58,7 +60,7 @@
                                             <i class="gi gi-briefcase header-icon"  ></i>
                                         </div>
                                         <h3 class="widget-content text-right animation-pullDown">
-                                           New <strong>Education</strong><br>
+                                           Add <strong>Education</strong><br>
                                             <small>HRM - ORD</small>
                                         </h3>
                                     </div>
@@ -98,7 +100,7 @@
                                 <!-- END Widget -->
                             </div>
                        
-                        </div>
+                      
 
  <!-- Page content -->
  
@@ -110,7 +112,7 @@
 
  
 <div class="block">
-  <div class="block-title"><h4>Human Resource Information Form</h4> </div>
+  <div class="block-title"><h4>Human Resource Information Form &nbsp; &nbsp; <a href="#" class="btn btn-primary" title="Print" target="popup" onclick="window.open('#', 'HR_Information_File', 'with=800, min-heigh')"> <i class="fa fa-print"></i> &nbsp; Print </a> </h4> </div>
 <p>
 <table class="table table-hover">
     <tr class="hr-info-header"> <td colspan="2"> Personal Information </td></tr>
@@ -144,8 +146,6 @@
 <th>Location</th>
 <th> From</th>
 <th> To</th>
-
-
 </tr>
 
 @foreach($profile->user->education as $education)
@@ -180,7 +180,7 @@
 
 @foreach($profile->user->experience as $experience)
 <tr>
-<td>  {{$experience->title}}</td>
+<td> {{$experience->title}}</td>
 <td> {{$experience->organization}}</td>
 <td> {{$experience->salary}}/{{$experience->unit}}</td>
 <td> {{$experience->from}}</td>
@@ -203,6 +203,42 @@
 @endforeach
 
 </table>
+
+
+{{--  previouse Documents Uploaded --}}
+<table class="table table-hover">
+<tr class="hr-info-header"> <td colspan="6"> Documents </td></tr>
+
+<tr>
+<th>Label</th>
+<th>Hard file address</th>
+<th> Actions</th>
+
+</tr>
+
+@foreach($profile->user->documents as $documents)
+<tr>
+<td> {{$documents->label}}</td>
+<td> {{$documents->hard_file_address}}</td>
+
+ 
+
+<td class="text-center">
+<div class="btn-group btn-group-xs">
+    <a href="javascript:void(0)" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+    <a href="javascript:void(0)" data-toggle="tooltip" title="" class="btn btn-danger" data-original-title="Delete"><i class="fa fa-times"></i></a>
+    <a href="javascript:void(0)" data-toggle="tooltip" title="" class="btn btn-primary" data-original-title="download"><i class="fa fa-download"></i></a>
+</div>
+</td>
+</tr>
+
+@endforeach
+
+</table>
+
+
+
+
 </p>
 </div>
 
@@ -323,18 +359,16 @@ with a new assignment
 <!-- END Private Notes Content -->
 </div>
 <!-- END Private Notes Block -->
+{{-- </div> --}}
+
+
 </div>
 
-
-
-
-</div>
-<!-- END User Profile Content -->
+ 
 </div>
 <!-- END Page Content -->
 
 @endsection
-
 <script src="{{ asset('assets/admin/js/vendor/jquery.min.js') }}"></script>
 
 

@@ -69,7 +69,7 @@ class User extends Authenticatable
  
     public function documents()
 {
-    return $this->hasMany('App\Document');
+    return $this->hasMany('App\Documents');
 }
    
  

@@ -9,10 +9,16 @@
                                     <div class="block-title">
                                         <h2><strong>Create new</strong> Project</h2>
                                     </div>
-           <form id="basic-wizard" action="{{route('project.store')}}" method="post" class="form-horizontal form-bordered ui-formwizard">
+           <form id="basic-wizard" action="{{route('project.store')}}" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered ui-formwizard">  
                @csrf
-
-
+               
+                <div class="form-group">
+                     <label class="col-md-4 control-label" for="example-firstname">Avatar *</label>
+                     <div class="col-md-6">
+                         <input type="file" id="avatar" name="avatar" class="form-control ui-wizard-content"  title="Avatar field is required!">
+                     </div>
+                 </div>
+                 
                    <div class="form-group">
                      <label class="col-md-4 control-label" for="Name"> Name &nbsp; <span id="reqired_field">*</span></label>
                      <div class="col-md-6">
